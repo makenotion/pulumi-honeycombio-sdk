@@ -1,0 +1,61 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
+export declare function getQuerySpecification(args?: GetQuerySpecificationArgs, opts?: pulumi.InvokeOptions): Promise<GetQuerySpecificationResult>;
+/**
+ * A collection of arguments for invoking getQuerySpecification.
+ */
+export interface GetQuerySpecificationArgs {
+    breakdowns?: string[];
+    calculatedFields?: inputs.GetQuerySpecificationCalculatedField[];
+    calculations?: inputs.GetQuerySpecificationCalculation[];
+    endTime?: number;
+    filterCombination?: string;
+    filters?: inputs.GetQuerySpecificationFilter[];
+    granularity?: number;
+    havings?: inputs.GetQuerySpecificationHaving[];
+    limit?: number;
+    orders?: inputs.GetQuerySpecificationOrder[];
+    startTime?: number;
+    timeRange?: number;
+}
+/**
+ * A collection of values returned by getQuerySpecification.
+ */
+export interface GetQuerySpecificationResult {
+    readonly breakdowns?: string[];
+    readonly calculatedFields?: outputs.GetQuerySpecificationCalculatedField[];
+    readonly calculations?: outputs.GetQuerySpecificationCalculation[];
+    readonly endTime?: number;
+    readonly filterCombination?: string;
+    readonly filters?: outputs.GetQuerySpecificationFilter[];
+    readonly granularity?: number;
+    readonly havings?: outputs.GetQuerySpecificationHaving[];
+    /**
+     * @deprecated Deprecated
+     */
+    readonly id: string;
+    readonly json: string;
+    readonly limit?: number;
+    readonly orders?: outputs.GetQuerySpecificationOrder[];
+    readonly startTime?: number;
+    readonly timeRange?: number;
+}
+export declare function getQuerySpecificationOutput(args?: GetQuerySpecificationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetQuerySpecificationResult>;
+/**
+ * A collection of arguments for invoking getQuerySpecification.
+ */
+export interface GetQuerySpecificationOutputArgs {
+    breakdowns?: pulumi.Input<pulumi.Input<string>[]>;
+    calculatedFields?: pulumi.Input<pulumi.Input<inputs.GetQuerySpecificationCalculatedFieldArgs>[]>;
+    calculations?: pulumi.Input<pulumi.Input<inputs.GetQuerySpecificationCalculationArgs>[]>;
+    endTime?: pulumi.Input<number>;
+    filterCombination?: pulumi.Input<string>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetQuerySpecificationFilterArgs>[]>;
+    granularity?: pulumi.Input<number>;
+    havings?: pulumi.Input<pulumi.Input<inputs.GetQuerySpecificationHavingArgs>[]>;
+    limit?: pulumi.Input<number>;
+    orders?: pulumi.Input<pulumi.Input<inputs.GetQuerySpecificationOrderArgs>[]>;
+    startTime?: pulumi.Input<number>;
+    timeRange?: pulumi.Input<number>;
+}
