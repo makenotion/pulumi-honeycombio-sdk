@@ -18,8 +18,8 @@
   },
   "pulumi": {
     "resource": true,
-    "name": "terraform-provider",
-    "version": "0.11.0",
+    "name": "honeycomb",
+    "version": "0.0.8",
     "parameterization": {
       "name": "honeycombio",
       "version": "0.33.0",
