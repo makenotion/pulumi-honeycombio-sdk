@@ -78,6 +78,7 @@ function lazyLoad(exports, props, loadModule) {
     }
 }
 exports.lazyLoad = lazyLoad;
+/** @internal */
 function callAsync(tok, props, res, opts) {
     return __awaiter(this, void 0, void 0, function* () {
         const o = runtime.call(tok, props, res);
@@ -117,7 +118,7 @@ function getPackage() {
                 params.setValue(Uint8Array.from(atob("eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2hvbmV5Y29tYmlvL2hvbmV5Y29tYmlvIiwidmVyc2lvbiI6IjAuMzMuMCJ9fQ=="), c => c.charCodeAt(0)));
                 const req = new resproto.RegisterPackageRequest();
                 req.setName("terraform-provider");
-                req.setVersion("0.11.0");
+                req.setVersion("0.13.0");
                 req.setDownloadUrl("");
                 req.setParameterization(params);
                 const resp = yield new Promise((resolve, reject) => {

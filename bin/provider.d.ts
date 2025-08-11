@@ -39,6 +39,12 @@ export declare class Provider extends pulumi.ProviderResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions);
+    /**
+     * This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.
+     */
+    terraformConfig(): pulumi.Output<{
+        [key: string]: any;
+    }>;
 }
 /**
  * The set of arguments for constructing a Provider resource.
@@ -68,4 +74,14 @@ export interface ProviderArgs {
      * Enable the API client's debug logs. By default, a `TF_LOG` setting of debug or higher will enable this.
      */
     debug?: pulumi.Input<boolean>;
+}
+export declare namespace Provider {
+    /**
+     * The results of the Provider.terraformConfig method.
+     */
+    interface TerraformConfigResult {
+        readonly result: {
+            [key: string]: any;
+        };
+    }
 }

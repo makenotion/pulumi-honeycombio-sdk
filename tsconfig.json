@@ -10,7 +10,6 @@
         "experimentalDecorators": true,
         "noFallthroughCasesInSwitch": true,
         "forceConsistentCasingInFileNames": true,
-        "skipLibCheck": true,
         "strict": true
     },
     "files": [

@@ -44,6 +44,15 @@ class Provider extends pulumi.ProviderResource {
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
     }
+    /**
+     * This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.
+     */
+    terraformConfig() {
+        const result = pulumi.runtime.call("pulumi:providers:honeycombio/terraformConfig", {
+            "__self__": this,
+        }, this, utilities.getPackage());
+        return result.result;
+    }
 }
 exports.Provider = Provider;
 /** @internal */
