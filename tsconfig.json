@@ -10,7 +10,8 @@
         "experimentalDecorators": true,
         "noFallthroughCasesInSwitch": true,
         "forceConsistentCasingInFileNames": true,
-        "strict": true
+        "strict": true,
+        "skipLibCheck": true
     },
     "files": [
         "apiKey.ts",
