@@ -70,6 +70,7 @@ export function lazyLoad(exports: any, props: string[], loadModule: any) {
     }
 }
 
+/** @internal */
 export async function callAsync<T>(
     tok: string,
     props: pulumi.Inputs,
@@ -114,7 +115,7 @@ export async function getPackage() : Promise<string | undefined> {
 
 			const req = new resproto.RegisterPackageRequest();
 			req.setName("terraform-provider");
-			req.setVersion("0.11.0");
+			req.setVersion("0.13.0");
 			req.setDownloadUrl("");
 			req.setParameterization(params);
 			const resp : any = await new Promise((resolve, reject) => {
