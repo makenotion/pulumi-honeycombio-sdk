@@ -4,7 +4,7 @@
 This SDK was generated using the following command
 
 ```
-pulumi package gen-sdk --local terraform-provider honeycombio/honeycombio
+pulumi package gen-sdk --local terraform-provider@0.13.0 honeycombio/honeycombio 0.36.0
 ```
 
 It is important that the version of the terraform-provider plugin used to generate this SDK matches the one installed in the spacelift runner docker image.

@@ -50,6 +50,11 @@ export type Environment = import("./environment").Environment;
 export const Environment: typeof import("./environment").Environment = null as any;
 utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
 
+export { FlexibleBoardArgs, FlexibleBoardState } from "./flexibleBoard";
+export type FlexibleBoard = import("./flexibleBoard").FlexibleBoard;
+export const FlexibleBoard: typeof import("./flexibleBoard").FlexibleBoard = null as any;
+utilities.lazyLoad(exports, ["FlexibleBoard"], () => require("./flexibleBoard"));
+
 export { GetAuthMetadataArgs, GetAuthMetadataResult, GetAuthMetadataOutputArgs } from "./getAuthMetadata";
 export const getAuthMetadata: typeof import("./getAuthMetadata").getAuthMetadata = null as any;
 export const getAuthMetadataOutput: typeof import("./getAuthMetadata").getAuthMetadataOutput = null as any;
@@ -220,6 +225,8 @@ const _module = {
                 return new EmailRecipient(name, <any>undefined, { urn })
             case "honeycombio:index/environment:Environment":
                 return new Environment(name, <any>undefined, { urn })
+            case "honeycombio:index/flexibleBoard:FlexibleBoard":
+                return new FlexibleBoard(name, <any>undefined, { urn })
             case "honeycombio:index/marker:Marker":
                 return new Marker(name, <any>undefined, { urn })
             case "honeycombio:index/markerSetting:MarkerSetting":
@@ -256,6 +263,7 @@ pulumi.runtime.registerResourceModule("honeycombio", "index/datasetDefinition", 
 pulumi.runtime.registerResourceModule("honeycombio", "index/derivedColumn", _module)
 pulumi.runtime.registerResourceModule("honeycombio", "index/emailRecipient", _module)
 pulumi.runtime.registerResourceModule("honeycombio", "index/environment", _module)
+pulumi.runtime.registerResourceModule("honeycombio", "index/flexibleBoard", _module)
 pulumi.runtime.registerResourceModule("honeycombio", "index/marker", _module)
 pulumi.runtime.registerResourceModule("honeycombio", "index/markerSetting", _module)
 pulumi.runtime.registerResourceModule("honeycombio", "index/msteamsRecipient", _module)

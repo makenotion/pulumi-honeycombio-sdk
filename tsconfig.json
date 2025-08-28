@@ -25,6 +25,7 @@
         "derivedColumn.ts",
         "emailRecipient.ts",
         "environment.ts",
+        "flexibleBoard.ts",
         "getAuthMetadata.ts",
         "getColumn.ts",
         "getColumns.ts",

@@ -86,6 +86,10 @@ export class Trigger extends pulumi.CustomResource {
      */
     public readonly recipients!: pulumi.Output<outputs.TriggerRecipient[] | undefined>;
     /**
+     * A map of tags to assign to the resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * A block describing the threshold for the Trigger to fire.
      */
     public readonly thresholds!: pulumi.Output<outputs.TriggerThreshold[] | undefined>;
@@ -97,7 +101,7 @@ export class Trigger extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: TriggerArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: TriggerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TriggerArgs | TriggerState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -114,12 +118,10 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["queryId"] = state ? state.queryId : undefined;
             resourceInputs["queryJson"] = state ? state.queryJson : undefined;
             resourceInputs["recipients"] = state ? state.recipients : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["thresholds"] = state ? state.thresholds : undefined;
         } else {
             const args = argsOrState as TriggerArgs | undefined;
-            if ((!args || args.dataset === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'dataset'");
-            }
             resourceInputs["alertType"] = args ? args.alertType : undefined;
             resourceInputs["baselineDetails"] = args ? args.baselineDetails : undefined;
             resourceInputs["dataset"] = args ? args.dataset : undefined;
@@ -131,6 +133,7 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["queryId"] = args ? args.queryId : undefined;
             resourceInputs["queryJson"] = args ? args.queryJson : undefined;
             resourceInputs["recipients"] = args ? args.recipients : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["thresholds"] = args ? args.thresholds : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -194,6 +197,10 @@ export interface TriggerState {
      */
     recipients?: pulumi.Input<pulumi.Input<inputs.TriggerRecipient>[]>;
     /**
+     * A map of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * A block describing the threshold for the Trigger to fire.
      */
     thresholds?: pulumi.Input<pulumi.Input<inputs.TriggerThreshold>[]>;
@@ -215,7 +222,7 @@ export interface TriggerArgs {
     /**
      * The dataset this Trigger is associated with.
      */
-    dataset: pulumi.Input<string>;
+    dataset?: pulumi.Input<string>;
     /**
      * A description of the Trigger.
      */
@@ -254,6 +261,10 @@ export interface TriggerArgs {
      * Zero or more recipients to notify when the resource fires.
      */
     recipients?: pulumi.Input<pulumi.Input<inputs.TriggerRecipient>[]>;
+    /**
+     * A map of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A block describing the threshold for the Trigger to fire.
      */
