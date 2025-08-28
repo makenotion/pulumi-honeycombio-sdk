@@ -36,7 +36,7 @@ export class Slo extends pulumi.CustomResource {
      * The dataset this SLO is created in. Will be deprecated in a future release. Must be the same dataset as the SLI unless
      * the SLI Derived Column is Environment-wide.
      */
-    public readonly dataset!: pulumi.Output<string | undefined>;
+    public readonly dataset!: pulumi.Output<string>;
     /**
      * The datasets the SLO is evaluated on.
      */
@@ -55,7 +55,10 @@ export class Slo extends pulumi.CustomResource {
      * false, as these are the only valid values for an SLI.
      */
     public readonly sli!: pulumi.Output<string>;
-    public readonly sloId!: pulumi.Output<string>;
+    /**
+     * A map of tags to assign to the resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The percentage of qualified events that you expect to succeed during the `time_period`.
      */
@@ -83,7 +86,7 @@ export class Slo extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["sli"] = state ? state.sli : undefined;
-            resourceInputs["sloId"] = state ? state.sloId : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["targetPercentage"] = state ? state.targetPercentage : undefined;
             resourceInputs["timePeriod"] = state ? state.timePeriod : undefined;
         } else {
@@ -102,7 +105,7 @@ export class Slo extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["sli"] = args ? args.sli : undefined;
-            resourceInputs["sloId"] = args ? args.sloId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["targetPercentage"] = args ? args.targetPercentage : undefined;
             resourceInputs["timePeriod"] = args ? args.timePeriod : undefined;
         }
@@ -138,7 +141,10 @@ export interface SloState {
      * false, as these are the only valid values for an SLI.
      */
     sli?: pulumi.Input<string>;
-    sloId?: pulumi.Input<string>;
+    /**
+     * A map of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The percentage of qualified events that you expect to succeed during the `time_period`.
      */
@@ -176,7 +182,10 @@ export interface SloArgs {
      * false, as these are the only valid values for an SLI.
      */
     sli: pulumi.Input<string>;
-    sloId?: pulumi.Input<string>;
+    /**
+     * A map of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The percentage of qualified events that you expect to succeed during the `time_period`.
      */

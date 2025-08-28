@@ -110,8 +110,8 @@ export async function getPackage() : Promise<string | undefined> {
 			const monitor = runtime.getMonitor();
 			const params = new resproto.Parameterization();
 			params.setName("honeycombio");
-			params.setVersion("0.33.0");
-			params.setValue(Uint8Array.from(atob("eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2hvbmV5Y29tYmlvL2hvbmV5Y29tYmlvIiwidmVyc2lvbiI6IjAuMzMuMCJ9fQ=="), c => c.charCodeAt(0)));
+			params.setVersion("0.36.0");
+			params.setValue(Uint8Array.from(atob("eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2hvbmV5Y29tYmlvL2hvbmV5Y29tYmlvIiwidmVyc2lvbiI6IjAuMzYuMCJ9fQ=="), c => c.charCodeAt(0)));
 
 			const req = new resproto.RegisterPackageRequest();
 			req.setName("terraform-provider");
