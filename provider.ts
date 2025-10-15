@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -62,6 +64,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["apiKeySecret"] = args?.apiKeySecret ? pulumi.secret(args.apiKeySecret) : undefined;
             resourceInputs["apiUrl"] = args ? args.apiUrl : undefined;
             resourceInputs["debug"] = pulumi.output(args ? args.debug : undefined).apply(JSON.stringify);
+            resourceInputs["features"] = pulumi.output(args ? args.features : undefined).apply(JSON.stringify);
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["apiKey", "apiKeySecret"] };
@@ -108,6 +111,10 @@ export interface ProviderArgs {
      * Enable the API client's debug logs. By default, a `TF_LOG` setting of debug or higher will enable this.
      */
     debug?: pulumi.Input<boolean>;
+    /**
+     * The features block allows customization of the behavior of the Honeycomb Provider.
+     */
+    features?: pulumi.Input<inputs.ProviderFeatures>;
 }
 
 export namespace Provider {

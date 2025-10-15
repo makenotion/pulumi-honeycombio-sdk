@@ -88,7 +88,7 @@ export class Trigger extends pulumi.CustomResource {
     /**
      * A map of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string}>;
     /**
      * A block describing the threshold for the Trigger to fire.
      */

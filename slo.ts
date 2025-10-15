@@ -58,7 +58,7 @@ export class Slo extends pulumi.CustomResource {
     /**
      * A map of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string}>;
     /**
      * The percentage of qualified events that you expect to succeed during the `time_period`.
      */

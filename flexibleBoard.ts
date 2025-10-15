@@ -53,7 +53,7 @@ export class FlexibleBoard extends pulumi.CustomResource {
     /**
      * A map of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a FlexibleBoard resource with the given unique name, arguments, and options.

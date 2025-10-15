@@ -35,16 +35,15 @@ export class QueryAnnotation extends pulumi.CustomResource {
     /**
      * The dataset this query annotation is added to. If not set, an Environment-wide query annotation will be created.
      */
-    public readonly dataset!: pulumi.Output<string | undefined>;
+    public readonly dataset!: pulumi.Output<string>;
     /**
      * The description to display as the query annotation.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * The name to display as the query annotation.
      */
     public readonly name!: pulumi.Output<string>;
-    public readonly queryAnnotationId!: pulumi.Output<string>;
     /**
      * The ID of the query that the annotation will be created on. Note that a query can have more than one annotation.
      */
@@ -66,7 +65,6 @@ export class QueryAnnotation extends pulumi.CustomResource {
             resourceInputs["dataset"] = state ? state.dataset : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["queryAnnotationId"] = state ? state.queryAnnotationId : undefined;
             resourceInputs["queryId"] = state ? state.queryId : undefined;
         } else {
             const args = argsOrState as QueryAnnotationArgs | undefined;
@@ -76,7 +74,6 @@ export class QueryAnnotation extends pulumi.CustomResource {
             resourceInputs["dataset"] = args ? args.dataset : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["queryAnnotationId"] = args ? args.queryAnnotationId : undefined;
             resourceInputs["queryId"] = args ? args.queryId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -100,7 +97,6 @@ export interface QueryAnnotationState {
      * The name to display as the query annotation.
      */
     name?: pulumi.Input<string>;
-    queryAnnotationId?: pulumi.Input<string>;
     /**
      * The ID of the query that the annotation will be created on. Note that a query can have more than one annotation.
      */
@@ -123,7 +119,6 @@ export interface QueryAnnotationArgs {
      * The name to display as the query annotation.
      */
     name?: pulumi.Input<string>;
-    queryAnnotationId?: pulumi.Input<string>;
     /**
      * The ID of the query that the annotation will be created on. Note that a query can have more than one annotation.
      */
