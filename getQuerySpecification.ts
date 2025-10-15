@@ -13,6 +13,7 @@ export function getQuerySpecification(args?: GetQuerySpecificationArgs, opts?: p
         "breakdowns": args.breakdowns,
         "calculatedFields": args.calculatedFields,
         "calculations": args.calculations,
+        "compareTimeOffset": args.compareTimeOffset,
         "endTime": args.endTime,
         "filterCombination": args.filterCombination,
         "filters": args.filters,
@@ -32,6 +33,7 @@ export interface GetQuerySpecificationArgs {
     breakdowns?: string[];
     calculatedFields?: inputs.GetQuerySpecificationCalculatedField[];
     calculations?: inputs.GetQuerySpecificationCalculation[];
+    compareTimeOffset?: number;
     endTime?: number;
     filterCombination?: string;
     filters?: inputs.GetQuerySpecificationFilter[];
@@ -50,6 +52,7 @@ export interface GetQuerySpecificationResult {
     readonly breakdowns?: string[];
     readonly calculatedFields?: outputs.GetQuerySpecificationCalculatedField[];
     readonly calculations?: outputs.GetQuerySpecificationCalculation[];
+    readonly compareTimeOffset?: number;
     readonly endTime?: number;
     readonly filterCombination?: string;
     readonly filters?: outputs.GetQuerySpecificationFilter[];
@@ -72,6 +75,7 @@ export function getQuerySpecificationOutput(args?: GetQuerySpecificationOutputAr
         "breakdowns": args.breakdowns,
         "calculatedFields": args.calculatedFields,
         "calculations": args.calculations,
+        "compareTimeOffset": args.compareTimeOffset,
         "endTime": args.endTime,
         "filterCombination": args.filterCombination,
         "filters": args.filters,
@@ -91,6 +95,7 @@ export interface GetQuerySpecificationOutputArgs {
     breakdowns?: pulumi.Input<pulumi.Input<string>[]>;
     calculatedFields?: pulumi.Input<pulumi.Input<inputs.GetQuerySpecificationCalculatedFieldArgs>[]>;
     calculations?: pulumi.Input<pulumi.Input<inputs.GetQuerySpecificationCalculationArgs>[]>;
+    compareTimeOffset?: pulumi.Input<number>;
     endTime?: pulumi.Input<number>;
     filterCombination?: pulumi.Input<string>;
     filters?: pulumi.Input<pulumi.Input<inputs.GetQuerySpecificationFilterArgs>[]>;

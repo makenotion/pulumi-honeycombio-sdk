@@ -32,18 +32,37 @@ export class Column extends pulumi.CustomResource {
         return obj['__pulumiType'] === Column.__pulumiType;
     }
 
-    public readonly columnId!: pulumi.Output<string>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
-    public readonly dataset!: pulumi.Output<string>;
-    public readonly description!: pulumi.Output<string | undefined>;
-    public readonly hidden!: pulumi.Output<boolean | undefined>;
     /**
-     * @deprecated Deprecated
+     * The time the Column was created.
      */
-    public readonly keyName!: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * The dataset this Column belongs to.
+     */
+    public readonly dataset!: pulumi.Output<string>;
+    /**
+     * The Column's description.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Whether the Column is hidden or not.
+     */
+    public readonly hidden!: pulumi.Output<boolean>;
+    /**
+     * The time the Column was last written to.
+     */
     public /*out*/ readonly lastWrittenAt!: pulumi.Output<string>;
+    /**
+     * The name of the Column.
+     */
     public readonly name!: pulumi.Output<string>;
-    public readonly type!: pulumi.Output<string | undefined>;
+    /**
+     * The Column's type. Valid values are `string`, `integer`, `float`, `boolean`.
+     */
+    public readonly type!: pulumi.Output<string>;
+    /**
+     * The time the Column was last updated.
+     */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
@@ -59,12 +78,10 @@ export class Column extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ColumnState | undefined;
-            resourceInputs["columnId"] = state ? state.columnId : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["dataset"] = state ? state.dataset : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["hidden"] = state ? state.hidden : undefined;
-            resourceInputs["keyName"] = state ? state.keyName : undefined;
             resourceInputs["lastWrittenAt"] = state ? state.lastWrittenAt : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
@@ -74,11 +91,9 @@ export class Column extends pulumi.CustomResource {
             if ((!args || args.dataset === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dataset'");
             }
-            resourceInputs["columnId"] = args ? args.columnId : undefined;
             resourceInputs["dataset"] = args ? args.dataset : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["hidden"] = args ? args.hidden : undefined;
-            resourceInputs["keyName"] = args ? args.keyName : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
@@ -94,18 +109,37 @@ export class Column extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Column resources.
  */
 export interface ColumnState {
-    columnId?: pulumi.Input<string>;
+    /**
+     * The time the Column was created.
+     */
     createdAt?: pulumi.Input<string>;
+    /**
+     * The dataset this Column belongs to.
+     */
     dataset?: pulumi.Input<string>;
+    /**
+     * The Column's description.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * Whether the Column is hidden or not.
+     */
     hidden?: pulumi.Input<boolean>;
     /**
-     * @deprecated Deprecated
+     * The time the Column was last written to.
      */
-    keyName?: pulumi.Input<string>;
     lastWrittenAt?: pulumi.Input<string>;
+    /**
+     * The name of the Column.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The Column's type. Valid values are `string`, `integer`, `float`, `boolean`.
+     */
     type?: pulumi.Input<string>;
+    /**
+     * The time the Column was last updated.
+     */
     updatedAt?: pulumi.Input<string>;
 }
 
@@ -113,14 +147,24 @@ export interface ColumnState {
  * The set of arguments for constructing a Column resource.
  */
 export interface ColumnArgs {
-    columnId?: pulumi.Input<string>;
+    /**
+     * The dataset this Column belongs to.
+     */
     dataset: pulumi.Input<string>;
+    /**
+     * The Column's description.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * Whether the Column is hidden or not.
+     */
     hidden?: pulumi.Input<boolean>;
     /**
-     * @deprecated Deprecated
+     * The name of the Column.
      */
-    keyName?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
+    /**
+     * The Column's type. Valid values are `string`, `integer`, `float`, `boolean`.
+     */
     type?: pulumi.Input<string>;
 }
