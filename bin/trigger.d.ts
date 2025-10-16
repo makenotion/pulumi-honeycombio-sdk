@@ -69,6 +69,12 @@ export declare class Trigger extends pulumi.CustomResource {
      */
     readonly recipients: pulumi.Output<outputs.TriggerRecipient[] | undefined>;
     /**
+     * A map of tags to assign to the resource.
+     */
+    readonly tags: pulumi.Output<{
+        [key: string]: string;
+    }>;
+    /**
      * A block describing the threshold for the Trigger to fire.
      */
     readonly thresholds: pulumi.Output<outputs.TriggerThreshold[] | undefined>;
@@ -79,7 +85,7 @@ export declare class Trigger extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: TriggerArgs, opts?: pulumi.CustomResourceOptions);
+    constructor(name: string, args?: TriggerArgs, opts?: pulumi.CustomResourceOptions);
 }
 /**
  * Input properties used for looking up and filtering Trigger resources.
@@ -137,6 +143,12 @@ export interface TriggerState {
      */
     recipients?: pulumi.Input<pulumi.Input<inputs.TriggerRecipient>[]>;
     /**
+     * A map of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{
+        [key: string]: pulumi.Input<string>;
+    }>;
+    /**
      * A block describing the threshold for the Trigger to fire.
      */
     thresholds?: pulumi.Input<pulumi.Input<inputs.TriggerThreshold>[]>;
@@ -157,7 +169,7 @@ export interface TriggerArgs {
     /**
      * The dataset this Trigger is associated with.
      */
-    dataset: pulumi.Input<string>;
+    dataset?: pulumi.Input<string>;
     /**
      * A description of the Trigger.
      */
@@ -196,6 +208,12 @@ export interface TriggerArgs {
      * Zero or more recipients to notify when the resource fires.
      */
     recipients?: pulumi.Input<pulumi.Input<inputs.TriggerRecipient>[]>;
+    /**
+     * A map of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{
+        [key: string]: pulumi.Input<string>;
+    }>;
     /**
      * A block describing the threshold for the Trigger to fire.
      */

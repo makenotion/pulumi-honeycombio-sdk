@@ -25,6 +25,9 @@ export declare const EmailRecipient: typeof import("./emailRecipient").EmailReci
 export { EnvironmentArgs, EnvironmentState } from "./environment";
 export type Environment = import("./environment").Environment;
 export declare const Environment: typeof import("./environment").Environment;
+export { FlexibleBoardArgs, FlexibleBoardState } from "./flexibleBoard";
+export type FlexibleBoard = import("./flexibleBoard").FlexibleBoard;
+export declare const FlexibleBoard: typeof import("./flexibleBoard").FlexibleBoard;
 export { GetAuthMetadataArgs, GetAuthMetadataResult, GetAuthMetadataOutputArgs } from "./getAuthMetadata";
 export declare const getAuthMetadata: typeof import("./getAuthMetadata").getAuthMetadata;
 export declare const getAuthMetadataOutput: typeof import("./getAuthMetadata").getAuthMetadataOutput;

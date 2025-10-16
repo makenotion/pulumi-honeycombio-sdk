@@ -44,13 +44,11 @@ class Trigger extends pulumi.CustomResource {
             resourceInputs["queryId"] = state ? state.queryId : undefined;
             resourceInputs["queryJson"] = state ? state.queryJson : undefined;
             resourceInputs["recipients"] = state ? state.recipients : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["thresholds"] = state ? state.thresholds : undefined;
         }
         else {
             const args = argsOrState;
-            if ((!args || args.dataset === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'dataset'");
-            }
             resourceInputs["alertType"] = args ? args.alertType : undefined;
             resourceInputs["baselineDetails"] = args ? args.baselineDetails : undefined;
             resourceInputs["dataset"] = args ? args.dataset : undefined;
@@ -62,6 +60,7 @@ class Trigger extends pulumi.CustomResource {
             resourceInputs["queryId"] = args ? args.queryId : undefined;
             resourceInputs["queryJson"] = args ? args.queryJson : undefined;
             resourceInputs["recipients"] = args ? args.recipients : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["thresholds"] = args ? args.thresholds : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

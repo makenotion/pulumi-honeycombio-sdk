@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 declare var exports: any;
@@ -62,6 +64,17 @@ export declare const debug: boolean | undefined;
 Object.defineProperty(exports, "debug", {
     get() {
         return __config.getObject<boolean>("debug");
+    },
+    enumerable: true,
+});
+
+/**
+ * The features block allows customization of the behavior of the Honeycomb Provider.
+ */
+export declare const features: outputs.config.Features | undefined;
+Object.defineProperty(exports, "features", {
+    get() {
+        return __config.getObject<outputs.config.Features>("features");
     },
     enumerable: true,
 });

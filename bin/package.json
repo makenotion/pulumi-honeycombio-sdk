@@ -1,6 +1,6 @@
 {
     "name": "@pulumi/honeycombio",
-    "version": "0.33.0",
+    "version": "0.42.0",
     "description": "A Pulumi provider dynamically bridged from honeycombio.",
     "repository": "https://github.com/honeycombio/terraform-provider-honeycombio",
     "main": "bin/index.js",
@@ -22,8 +22,8 @@
         "version": "0.13.0",
         "parameterization": {
             "name": "honeycombio",
-            "version": "0.33.0",
-            "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2hvbmV5Y29tYmlvL2hvbmV5Y29tYmlvIiwidmVyc2lvbiI6IjAuMzMuMCJ9fQ=="
+            "version": "0.42.0",
+            "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2hvbmV5Y29tYmlvL2hvbmV5Y29tYmlvIiwidmVyc2lvbiI6IjAuNDIuMCJ9fQ=="
         }
     }
 }

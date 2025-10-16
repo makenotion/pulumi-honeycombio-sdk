@@ -16,8 +16,8 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Slo = exports.SlackRecipient = exports.QueryAnnotation = exports.Query = exports.PagerdutyRecipient = exports.MsteamsWorkflowRecipient = exports.MsteamsRecipient = exports.MarkerSetting = exports.Marker = exports.getTriggerRecipientOutput = exports.getTriggerRecipient = exports.getSlosOutput = exports.getSlos = exports.getSloOutput = exports.getSlo = exports.getRecipientsOutput = exports.getRecipients = exports.getRecipientOutput = exports.getRecipient = exports.getQuerySpecificationOutput = exports.getQuerySpecification = exports.getQueryResultOutput = exports.getQueryResult = exports.getEnvironmentsOutput = exports.getEnvironments = exports.getEnvironmentOutput = exports.getEnvironment = exports.getDerivedColumnsOutput = exports.getDerivedColumns = exports.getDerivedColumnOutput = exports.getDerivedColumn = exports.getDatasetsOutput = exports.getDatasets = exports.getDatasetOutput = exports.getDataset = exports.getColumnsOutput = exports.getColumns = exports.getColumnOutput = exports.getColumn = exports.getAuthMetadataOutput = exports.getAuthMetadata = exports.Environment = exports.EmailRecipient = exports.DerivedColumn = exports.DatasetDefinition = exports.Dataset = exports.Column = exports.BurnAlert = exports.Board = exports.ApiKey = void 0;
-exports.types = exports.config = exports.WebhookRecipient = exports.Trigger = void 0;
+exports.SlackRecipient = exports.QueryAnnotation = exports.Query = exports.PagerdutyRecipient = exports.MsteamsWorkflowRecipient = exports.MsteamsRecipient = exports.MarkerSetting = exports.Marker = exports.getTriggerRecipientOutput = exports.getTriggerRecipient = exports.getSlosOutput = exports.getSlos = exports.getSloOutput = exports.getSlo = exports.getRecipientsOutput = exports.getRecipients = exports.getRecipientOutput = exports.getRecipient = exports.getQuerySpecificationOutput = exports.getQuerySpecification = exports.getQueryResultOutput = exports.getQueryResult = exports.getEnvironmentsOutput = exports.getEnvironments = exports.getEnvironmentOutput = exports.getEnvironment = exports.getDerivedColumnsOutput = exports.getDerivedColumns = exports.getDerivedColumnOutput = exports.getDerivedColumn = exports.getDatasetsOutput = exports.getDatasets = exports.getDatasetOutput = exports.getDataset = exports.getColumnsOutput = exports.getColumns = exports.getColumnOutput = exports.getColumn = exports.getAuthMetadataOutput = exports.getAuthMetadata = exports.FlexibleBoard = exports.Environment = exports.EmailRecipient = exports.DerivedColumn = exports.DatasetDefinition = exports.Dataset = exports.Column = exports.BurnAlert = exports.Board = exports.ApiKey = void 0;
+exports.types = exports.config = exports.WebhookRecipient = exports.Trigger = exports.Slo = void 0;
 const pulumi = require("@pulumi/pulumi");
 const utilities = require("./utilities");
 exports.ApiKey = null;
@@ -38,6 +38,8 @@ exports.EmailRecipient = null;
 utilities.lazyLoad(exports, ["EmailRecipient"], () => require("./emailRecipient"));
 exports.Environment = null;
 utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
+exports.FlexibleBoard = null;
+utilities.lazyLoad(exports, ["FlexibleBoard"], () => require("./flexibleBoard"));
 exports.getAuthMetadata = null;
 exports.getAuthMetadataOutput = null;
 utilities.lazyLoad(exports, ["getAuthMetadata", "getAuthMetadataOutput"], () => require("./getAuthMetadata"));
@@ -137,6 +139,8 @@ const _module = {
                 return new exports.EmailRecipient(name, undefined, { urn });
             case "honeycombio:index/environment:Environment":
                 return new exports.Environment(name, undefined, { urn });
+            case "honeycombio:index/flexibleBoard:FlexibleBoard":
+                return new exports.FlexibleBoard(name, undefined, { urn });
             case "honeycombio:index/marker:Marker":
                 return new exports.Marker(name, undefined, { urn });
             case "honeycombio:index/markerSetting:MarkerSetting":
@@ -173,6 +177,7 @@ pulumi.runtime.registerResourceModule("honeycombio", "index/datasetDefinition", 
 pulumi.runtime.registerResourceModule("honeycombio", "index/derivedColumn", _module);
 pulumi.runtime.registerResourceModule("honeycombio", "index/emailRecipient", _module);
 pulumi.runtime.registerResourceModule("honeycombio", "index/environment", _module);
+pulumi.runtime.registerResourceModule("honeycombio", "index/flexibleBoard", _module);
 pulumi.runtime.registerResourceModule("honeycombio", "index/marker", _module);
 pulumi.runtime.registerResourceModule("honeycombio", "index/markerSetting", _module);
 pulumi.runtime.registerResourceModule("honeycombio", "index/msteamsRecipient", _module);

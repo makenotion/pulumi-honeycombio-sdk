@@ -114,8 +114,8 @@ function getPackage() {
                 const monitor = runtime.getMonitor();
                 const params = new resproto.Parameterization();
                 params.setName("honeycombio");
-                params.setVersion("0.33.0");
-                params.setValue(Uint8Array.from(atob("eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2hvbmV5Y29tYmlvL2hvbmV5Y29tYmlvIiwidmVyc2lvbiI6IjAuMzMuMCJ9fQ=="), c => c.charCodeAt(0)));
+                params.setVersion("0.42.0");
+                params.setValue(Uint8Array.from(atob("eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2hvbmV5Y29tYmlvL2hvbmV5Y29tYmlvIiwidmVyc2lvbiI6IjAuNDIuMCJ9fQ=="), c => c.charCodeAt(0)));
                 const req = new resproto.RegisterPackageRequest();
                 req.setName("terraform-provider");
                 req.setVersion("0.13.0");

@@ -74,6 +74,11 @@ export interface ProviderArgs {
      * Enable the API client's debug logs. By default, a `TF_LOG` setting of debug or higher will enable this.
      */
     debug?: pulumi.Input<boolean>;
+    /**
+     * TODO: Temporarily hacked to get the provider to build.
+     * The features block allows customization of the behavior of the Honeycomb Provider.
+     */
+    features?: pulumi.Input<string>;
 }
 export declare namespace Provider {
     /**
