@@ -18,16 +18,15 @@ export declare class QueryAnnotation extends pulumi.CustomResource {
     /**
      * The dataset this query annotation is added to. If not set, an Environment-wide query annotation will be created.
      */
-    readonly dataset: pulumi.Output<string | undefined>;
+    readonly dataset: pulumi.Output<string>;
     /**
      * The description to display as the query annotation.
      */
-    readonly description: pulumi.Output<string | undefined>;
+    readonly description: pulumi.Output<string>;
     /**
      * The name to display as the query annotation.
      */
     readonly name: pulumi.Output<string>;
-    readonly queryAnnotationId: pulumi.Output<string>;
     /**
      * The ID of the query that the annotation will be created on. Note that a query can have more than one annotation.
      */
@@ -57,7 +56,6 @@ export interface QueryAnnotationState {
      * The name to display as the query annotation.
      */
     name?: pulumi.Input<string>;
-    queryAnnotationId?: pulumi.Input<string>;
     /**
      * The ID of the query that the annotation will be created on. Note that a query can have more than one annotation.
      */
@@ -79,7 +77,6 @@ export interface QueryAnnotationArgs {
      * The name to display as the query annotation.
      */
     name?: pulumi.Input<string>;
-    queryAnnotationId?: pulumi.Input<string>;
     /**
      * The ID of the query that the annotation will be created on. Note that a query can have more than one annotation.
      */

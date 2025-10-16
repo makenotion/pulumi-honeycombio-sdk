@@ -23,6 +23,9 @@ export interface GetSloResult {
     readonly id: string;
     readonly name: string;
     readonly sli: string;
+    readonly tags: {
+        [key: string]: string;
+    };
     readonly targetPercentage: number;
     readonly timePeriod: number;
 }

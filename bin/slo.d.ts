@@ -19,7 +19,7 @@ export declare class Slo extends pulumi.CustomResource {
      * The dataset this SLO is created in. Will be deprecated in a future release. Must be the same dataset as the SLI unless
      * the SLI Derived Column is Environment-wide.
      */
-    readonly dataset: pulumi.Output<string | undefined>;
+    readonly dataset: pulumi.Output<string>;
     /**
      * The datasets the SLO is evaluated on.
      */
@@ -38,7 +38,12 @@ export declare class Slo extends pulumi.CustomResource {
      * false, as these are the only valid values for an SLI.
      */
     readonly sli: pulumi.Output<string>;
-    readonly sloId: pulumi.Output<string>;
+    /**
+     * A map of tags to assign to the resource.
+     */
+    readonly tags: pulumi.Output<{
+        [key: string]: string;
+    }>;
     /**
      * The percentage of qualified events that you expect to succeed during the `time_period`.
      */
@@ -83,7 +88,12 @@ export interface SloState {
      * false, as these are the only valid values for an SLI.
      */
     sli?: pulumi.Input<string>;
-    sloId?: pulumi.Input<string>;
+    /**
+     * A map of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{
+        [key: string]: pulumi.Input<string>;
+    }>;
     /**
      * The percentage of qualified events that you expect to succeed during the `time_period`.
      */
@@ -120,7 +130,12 @@ export interface SloArgs {
      * false, as these are the only valid values for an SLI.
      */
     sli: pulumi.Input<string>;
-    sloId?: pulumi.Input<string>;
+    /**
+     * A map of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{
+        [key: string]: pulumi.Input<string>;
+    }>;
     /**
      * The percentage of qualified events that you expect to succeed during the `time_period`.
      */

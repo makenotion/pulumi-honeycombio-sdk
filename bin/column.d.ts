@@ -15,18 +15,37 @@ export declare class Column extends pulumi.CustomResource {
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
     static isInstance(obj: any): obj is Column;
-    readonly columnId: pulumi.Output<string>;
-    readonly createdAt: pulumi.Output<string>;
-    readonly dataset: pulumi.Output<string>;
-    readonly description: pulumi.Output<string | undefined>;
-    readonly hidden: pulumi.Output<boolean | undefined>;
     /**
-     * @deprecated Deprecated
+     * The time the Column was created.
      */
-    readonly keyName: pulumi.Output<string>;
+    readonly createdAt: pulumi.Output<string>;
+    /**
+     * The dataset this Column belongs to.
+     */
+    readonly dataset: pulumi.Output<string>;
+    /**
+     * The Column's description.
+     */
+    readonly description: pulumi.Output<string>;
+    /**
+     * Whether the Column is hidden or not.
+     */
+    readonly hidden: pulumi.Output<boolean>;
+    /**
+     * The time the Column was last written to.
+     */
     readonly lastWrittenAt: pulumi.Output<string>;
+    /**
+     * The name of the Column.
+     */
     readonly name: pulumi.Output<string>;
-    readonly type: pulumi.Output<string | undefined>;
+    /**
+     * The Column's type. Valid values are `string`, `integer`, `float`, `boolean`.
+     */
+    readonly type: pulumi.Output<string>;
+    /**
+     * The time the Column was last updated.
+     */
     readonly updatedAt: pulumi.Output<string>;
     /**
      * Create a Column resource with the given unique name, arguments, and options.
@@ -41,32 +60,61 @@ export declare class Column extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Column resources.
  */
 export interface ColumnState {
-    columnId?: pulumi.Input<string>;
+    /**
+     * The time the Column was created.
+     */
     createdAt?: pulumi.Input<string>;
+    /**
+     * The dataset this Column belongs to.
+     */
     dataset?: pulumi.Input<string>;
+    /**
+     * The Column's description.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * Whether the Column is hidden or not.
+     */
     hidden?: pulumi.Input<boolean>;
     /**
-     * @deprecated Deprecated
+     * The time the Column was last written to.
      */
-    keyName?: pulumi.Input<string>;
     lastWrittenAt?: pulumi.Input<string>;
+    /**
+     * The name of the Column.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The Column's type. Valid values are `string`, `integer`, `float`, `boolean`.
+     */
     type?: pulumi.Input<string>;
+    /**
+     * The time the Column was last updated.
+     */
     updatedAt?: pulumi.Input<string>;
 }
 /**
  * The set of arguments for constructing a Column resource.
  */
 export interface ColumnArgs {
-    columnId?: pulumi.Input<string>;
+    /**
+     * The dataset this Column belongs to.
+     */
     dataset: pulumi.Input<string>;
+    /**
+     * The Column's description.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * Whether the Column is hidden or not.
+     */
     hidden?: pulumi.Input<boolean>;
     /**
-     * @deprecated Deprecated
+     * The name of the Column.
      */
-    keyName?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
+    /**
+     * The Column's type. Valid values are `string`, `integer`, `float`, `boolean`.
+     */
     type?: pulumi.Input<string>;
 }

@@ -34,4 +34,10 @@ Object.defineProperty(exports, "debug", {
     },
     enumerable: true,
 });
+Object.defineProperty(exports, "features", {
+    get() {
+        return __config.getObject("features");
+    },
+    enumerable: true,
+});
 //# sourceMappingURL=vars.js.map

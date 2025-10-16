@@ -121,7 +121,7 @@ export interface FlexibleBoardPanel {
     /**
      * Manages the position of the panel on the board.
      */
-    positions?: pulumi.Input<pulumi.Input<inputs.FlexibleBoardPanelPosition>[]>;
+    position?: pulumi.Input<inputs.FlexibleBoardPanelPosition>;
     /**
      * A query panel to be displayed on the Board.
      */
@@ -131,7 +131,11 @@ export interface FlexibleBoardPanel {
      */
     sloPanels?: pulumi.Input<pulumi.Input<inputs.FlexibleBoardPanelSloPanel>[]>;
     /**
-     * The panel type, either "query" or "slo".
+     * A text panel to be displayed on the Board.
+     */
+    textPanels?: pulumi.Input<pulumi.Input<inputs.FlexibleBoardPanelTextPanel>[]>;
+    /**
+     * The panel type, either "query", "slo", or "text".
      */
     type: pulumi.Input<string>;
 }
@@ -219,6 +223,13 @@ export interface FlexibleBoardPanelSloPanel {
      * SLO ID to display in this panel.
      */
     sloId: pulumi.Input<string>;
+}
+
+export interface FlexibleBoardPanelTextPanel {
+    /**
+     * The content of the text panel. Supports Markdown.
+     */
+    content: pulumi.Input<string>;
 }
 
 export interface GetAuthMetadataApiKeyAccess {
@@ -705,6 +716,31 @@ export interface GetSlosDetailFilterArgs {
     valueRegex?: pulumi.Input<string>;
 }
 
+export interface ProviderFeatures {
+    /**
+     * Column resource features.
+     */
+    column?: pulumi.Input<inputs.ProviderFeaturesColumn>;
+    /**
+     * Dataset resource features.
+     */
+    dataset?: pulumi.Input<inputs.ProviderFeaturesDataset>;
+}
+
+export interface ProviderFeaturesColumn {
+    /**
+     * This changes the creation behavior of the column resource to import an existing column if it already exists, rather than erroring out.
+     */
+    importOnConflict?: pulumi.Input<boolean>;
+}
+
+export interface ProviderFeaturesDataset {
+    /**
+     * This changes the creation behavior of the dataset resource to import an existing dataset if it already exists, rather than erroring out.
+     */
+    importOnConflict?: pulumi.Input<boolean>;
+}
+
 export interface TriggerBaselineDetail {
     /**
      * What previous time period to evaluate against: 1 hour, 1 day, 1 week, or 4 weeks.
@@ -818,4 +854,6 @@ export interface WebhookRecipientVariable {
      * The name of the variable
      */
     name: pulumi.Input<string>;
+}
+export namespace config {
 }

@@ -33,12 +33,10 @@ class Column extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState;
-            resourceInputs["columnId"] = state ? state.columnId : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["dataset"] = state ? state.dataset : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["hidden"] = state ? state.hidden : undefined;
-            resourceInputs["keyName"] = state ? state.keyName : undefined;
             resourceInputs["lastWrittenAt"] = state ? state.lastWrittenAt : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
@@ -49,11 +47,9 @@ class Column extends pulumi.CustomResource {
             if ((!args || args.dataset === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dataset'");
             }
-            resourceInputs["columnId"] = args ? args.columnId : undefined;
             resourceInputs["dataset"] = args ? args.dataset : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["hidden"] = args ? args.hidden : undefined;
-            resourceInputs["keyName"] = args ? args.keyName : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;

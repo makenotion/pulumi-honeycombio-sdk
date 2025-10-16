@@ -105,6 +105,114 @@ export interface BurnAlertRecipientNotificationDetailVariable {
      */
     value?: pulumi.Input<string>;
 }
+export interface FlexibleBoardPanel {
+    /**
+     * Manages the position of the panel on the board.
+     */
+    position?: pulumi.Input<inputs.FlexibleBoardPanelPosition>;
+    /**
+     * A query panel to be displayed on the Board.
+     */
+    queryPanels?: pulumi.Input<pulumi.Input<inputs.FlexibleBoardPanelQueryPanel>[]>;
+    /**
+     * A Service Level Objective(SLO) panel to be displayed on the Board.
+     */
+    sloPanels?: pulumi.Input<pulumi.Input<inputs.FlexibleBoardPanelSloPanel>[]>;
+    /**
+     * A text panel to be displayed on the Board.
+     */
+    textPanels?: pulumi.Input<pulumi.Input<inputs.FlexibleBoardPanelTextPanel>[]>;
+    /**
+     * The panel type, either "query", "slo", or "text".
+     */
+    type: pulumi.Input<string>;
+}
+export interface FlexibleBoardPanelPosition {
+    /**
+     * The height of the panel.
+     */
+    height?: pulumi.Input<number>;
+    /**
+     * The width of the panel.
+     */
+    width?: pulumi.Input<number>;
+    /**
+     * The X coordinate of the panel.
+     */
+    xCoordinate?: pulumi.Input<number>;
+    /**
+     * The Y coordinate of the panel.
+     */
+    yCoordinate?: pulumi.Input<number>;
+}
+export interface FlexibleBoardPanelQueryPanel {
+    /**
+     * Query annotation ID.
+     */
+    queryAnnotationId: pulumi.Input<string>;
+    /**
+     * Query ID to be rendered in the panel.
+     */
+    queryId: pulumi.Input<string>;
+    /**
+     * The visual style of the query (e.g., 'graph', 'combo').
+     */
+    queryStyle?: pulumi.Input<string>;
+    visualizationSettings?: pulumi.Input<pulumi.Input<inputs.FlexibleBoardPanelQueryPanelVisualizationSetting>[]>;
+}
+export interface FlexibleBoardPanelQueryPanelVisualizationSetting {
+    charts?: pulumi.Input<pulumi.Input<inputs.FlexibleBoardPanelQueryPanelVisualizationSettingChart>[]>;
+    /**
+     * Hide comparison values.
+     */
+    hideCompare?: pulumi.Input<boolean>;
+    /**
+     * Disable Graph tooltips in the results display when hovering over a graph.
+     */
+    hideHovers?: pulumi.Input<boolean>;
+    /**
+     * Hide markers from appearing on graph.
+     */
+    hideMarkers?: pulumi.Input<boolean>;
+    /**
+     * Combine any visualized AVG, MIN, MAX, and PERCENTILE clauses into a single chart.
+     */
+    preferOverlaidCharts?: pulumi.Input<boolean>;
+    /**
+     * Display UTC Time X-Axis or Localtime X-Axis.
+     */
+    useUtcXaxis?: pulumi.Input<boolean>;
+}
+export interface FlexibleBoardPanelQueryPanelVisualizationSettingChart {
+    /**
+     * Index of the chart this configuration controls.
+     */
+    chartIndex?: pulumi.Input<number>;
+    /**
+     * Type of chart (e.g., 'line', 'bar').
+     */
+    chartType?: pulumi.Input<string>;
+    /**
+     * Omit missing values from the visualization.
+     */
+    omitMissingValues?: pulumi.Input<boolean>;
+    /**
+     * Use logarithmic scale on Y axis.
+     */
+    useLogScale?: pulumi.Input<boolean>;
+}
+export interface FlexibleBoardPanelSloPanel {
+    /**
+     * SLO ID to display in this panel.
+     */
+    sloId: pulumi.Input<string>;
+}
+export interface FlexibleBoardPanelTextPanel {
+    /**
+     * The content of the text panel. Supports Markdown.
+     */
+    content: pulumi.Input<string>;
+}
 export interface GetAuthMetadataApiKeyAccess {
     /**
      * Whether this API key can create and manage Boards.
@@ -231,9 +339,13 @@ export interface GetAuthMetadataTeamArgs {
 }
 export interface GetDatasetsDetailFilter {
     /**
-     * The name of the detail field to filter by. Currently only 'name' is supported.
+     * The field to filter by (e.g., 'name', 'id', 'description', etc.).
      */
     name: string;
+    /**
+     * The comparison operator. The default is 'equals'.
+     */
+    operator?: string;
     /**
      * The value of the detail field to match on.
      */
@@ -245,9 +357,13 @@ export interface GetDatasetsDetailFilter {
 }
 export interface GetDatasetsDetailFilterArgs {
     /**
-     * The name of the detail field to filter by. Currently only 'name' is supported.
+     * The field to filter by (e.g., 'name', 'id', 'description', etc.).
      */
     name: pulumi.Input<string>;
+    /**
+     * The comparison operator. The default is 'equals'.
+     */
+    operator?: pulumi.Input<string>;
     /**
      * The value of the detail field to match on.
      */
@@ -259,9 +375,13 @@ export interface GetDatasetsDetailFilterArgs {
 }
 export interface GetEnvironmentDetailFilter {
     /**
-     * The name of the detail field to filter by. Currently only 'name' is supported.
+     * The field to filter by (e.g., 'name', 'id', 'description', etc.).
      */
     name: string;
+    /**
+     * The comparison operator. The default is 'equals'.
+     */
+    operator?: string;
     /**
      * The value of the detail field to match on.
      */
@@ -273,9 +393,13 @@ export interface GetEnvironmentDetailFilter {
 }
 export interface GetEnvironmentDetailFilterArgs {
     /**
-     * The name of the detail field to filter by. Currently only 'name' is supported.
+     * The field to filter by (e.g., 'name', 'id', 'description', etc.).
      */
     name: pulumi.Input<string>;
+    /**
+     * The comparison operator. The default is 'equals'.
+     */
+    operator?: pulumi.Input<string>;
     /**
      * The value of the detail field to match on.
      */
@@ -287,9 +411,13 @@ export interface GetEnvironmentDetailFilterArgs {
 }
 export interface GetEnvironmentsDetailFilter {
     /**
-     * The name of the detail field to filter by. Currently only 'name' is supported.
+     * The field to filter by (e.g., 'name', 'id', 'description', etc.).
      */
     name: string;
+    /**
+     * The comparison operator. The default is 'equals'.
+     */
+    operator?: string;
     /**
      * The value of the detail field to match on.
      */
@@ -301,9 +429,13 @@ export interface GetEnvironmentsDetailFilter {
 }
 export interface GetEnvironmentsDetailFilterArgs {
     /**
-     * The name of the detail field to filter by. Currently only 'name' is supported.
+     * The field to filter by (e.g., 'name', 'id', 'description', etc.).
      */
     name: pulumi.Input<string>;
+    /**
+     * The comparison operator. The default is 'equals'.
+     */
+    operator?: pulumi.Input<string>;
     /**
      * The value of the detail field to match on.
      */
@@ -503,9 +635,13 @@ export interface GetRecipientsDetailFilterArgs {
 }
 export interface GetSlosDetailFilter {
     /**
-     * The name of the detail field to filter by. Currently only 'name' is supported.
+     * The field to filter by (e.g., 'name', 'id', 'description', etc.).
      */
     name: string;
+    /**
+     * The comparison operator. The default is 'equals'.
+     */
+    operator?: string;
     /**
      * The value of the detail field to match on.
      */
@@ -517,9 +653,13 @@ export interface GetSlosDetailFilter {
 }
 export interface GetSlosDetailFilterArgs {
     /**
-     * The name of the detail field to filter by. Currently only 'name' is supported.
+     * The field to filter by (e.g., 'name', 'id', 'description', etc.).
      */
     name: pulumi.Input<string>;
+    /**
+     * The comparison operator. The default is 'equals'.
+     */
+    operator?: pulumi.Input<string>;
     /**
      * The value of the detail field to match on.
      */
@@ -528,6 +668,28 @@ export interface GetSlosDetailFilterArgs {
      * A regular expression string to apply to the value of the detail field to match on.
      */
     valueRegex?: pulumi.Input<string>;
+}
+export interface ProviderFeatures {
+    /**
+     * Column resource features.
+     */
+    column?: pulumi.Input<inputs.ProviderFeaturesColumn>;
+    /**
+     * Dataset resource features.
+     */
+    dataset?: pulumi.Input<inputs.ProviderFeaturesDataset>;
+}
+export interface ProviderFeaturesColumn {
+    /**
+     * This changes the creation behavior of the column resource to import an existing column if it already exists, rather than erroring out.
+     */
+    importOnConflict?: pulumi.Input<boolean>;
+}
+export interface ProviderFeaturesDataset {
+    /**
+     * This changes the creation behavior of the dataset resource to import an existing dataset if it already exists, rather than erroring out.
+     */
+    importOnConflict?: pulumi.Input<boolean>;
 }
 export interface TriggerBaselineDetail {
     /**
@@ -634,4 +796,6 @@ export interface WebhookRecipientVariable {
      * The name of the variable
      */
     name: pulumi.Input<string>;
+}
+export declare namespace config {
 }

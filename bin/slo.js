@@ -38,7 +38,7 @@ class Slo extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["sli"] = state ? state.sli : undefined;
-            resourceInputs["sloId"] = state ? state.sloId : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["targetPercentage"] = state ? state.targetPercentage : undefined;
             resourceInputs["timePeriod"] = state ? state.timePeriod : undefined;
         }
@@ -58,7 +58,7 @@ class Slo extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["sli"] = args ? args.sli : undefined;
-            resourceInputs["sloId"] = args ? args.sloId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["targetPercentage"] = args ? args.targetPercentage : undefined;
             resourceInputs["timePeriod"] = args ? args.timePeriod : undefined;
         }

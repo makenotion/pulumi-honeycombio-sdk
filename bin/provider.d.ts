@@ -1,4 +1,5 @@
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
 /**
  * The provider type for the honeycombio package. By default, resources use package-wide configuration
  * settings, however an explicit `Provider` instance may be created and passed during resource
@@ -74,6 +75,10 @@ export interface ProviderArgs {
      * Enable the API client's debug logs. By default, a `TF_LOG` setting of debug or higher will enable this.
      */
     debug?: pulumi.Input<boolean>;
+    /**
+     * The features block allows customization of the behavior of the Honeycomb Provider.
+     */
+    features?: pulumi.Input<inputs.ProviderFeatures>;
 }
 export declare namespace Provider {
     /**

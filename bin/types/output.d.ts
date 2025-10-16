@@ -104,6 +104,114 @@ export interface BurnAlertRecipientNotificationDetailVariable {
      */
     value: string;
 }
+export interface FlexibleBoardPanel {
+    /**
+     * Manages the position of the panel on the board.
+     */
+    position?: outputs.FlexibleBoardPanelPosition;
+    /**
+     * A query panel to be displayed on the Board.
+     */
+    queryPanels?: outputs.FlexibleBoardPanelQueryPanel[];
+    /**
+     * A Service Level Objective(SLO) panel to be displayed on the Board.
+     */
+    sloPanels?: outputs.FlexibleBoardPanelSloPanel[];
+    /**
+     * A text panel to be displayed on the Board.
+     */
+    textPanels?: outputs.FlexibleBoardPanelTextPanel[];
+    /**
+     * The panel type, either "query", "slo", or "text".
+     */
+    type: string;
+}
+export interface FlexibleBoardPanelPosition {
+    /**
+     * The height of the panel.
+     */
+    height: number;
+    /**
+     * The width of the panel.
+     */
+    width: number;
+    /**
+     * The X coordinate of the panel.
+     */
+    xCoordinate: number;
+    /**
+     * The Y coordinate of the panel.
+     */
+    yCoordinate: number;
+}
+export interface FlexibleBoardPanelQueryPanel {
+    /**
+     * Query annotation ID.
+     */
+    queryAnnotationId: string;
+    /**
+     * Query ID to be rendered in the panel.
+     */
+    queryId: string;
+    /**
+     * The visual style of the query (e.g., 'graph', 'combo').
+     */
+    queryStyle: string;
+    visualizationSettings?: outputs.FlexibleBoardPanelQueryPanelVisualizationSetting[];
+}
+export interface FlexibleBoardPanelQueryPanelVisualizationSetting {
+    charts?: outputs.FlexibleBoardPanelQueryPanelVisualizationSettingChart[];
+    /**
+     * Hide comparison values.
+     */
+    hideCompare: boolean;
+    /**
+     * Disable Graph tooltips in the results display when hovering over a graph.
+     */
+    hideHovers: boolean;
+    /**
+     * Hide markers from appearing on graph.
+     */
+    hideMarkers: boolean;
+    /**
+     * Combine any visualized AVG, MIN, MAX, and PERCENTILE clauses into a single chart.
+     */
+    preferOverlaidCharts: boolean;
+    /**
+     * Display UTC Time X-Axis or Localtime X-Axis.
+     */
+    useUtcXaxis: boolean;
+}
+export interface FlexibleBoardPanelQueryPanelVisualizationSettingChart {
+    /**
+     * Index of the chart this configuration controls.
+     */
+    chartIndex: number;
+    /**
+     * Type of chart (e.g., 'line', 'bar').
+     */
+    chartType: string;
+    /**
+     * Omit missing values from the visualization.
+     */
+    omitMissingValues: boolean;
+    /**
+     * Use logarithmic scale on Y axis.
+     */
+    useLogScale: boolean;
+}
+export interface FlexibleBoardPanelSloPanel {
+    /**
+     * SLO ID to display in this panel.
+     */
+    sloId: string;
+}
+export interface FlexibleBoardPanelTextPanel {
+    /**
+     * The content of the text panel. Supports Markdown.
+     */
+    content: string;
+}
 export interface GetAuthMetadataApiKeyAccess {
     /**
      * Whether this API key can create and manage Boards.
@@ -168,9 +276,13 @@ export interface GetAuthMetadataTeam {
 }
 export interface GetDatasetsDetailFilter {
     /**
-     * The name of the detail field to filter by. Currently only 'name' is supported.
+     * The field to filter by (e.g., 'name', 'id', 'description', etc.).
      */
     name: string;
+    /**
+     * The comparison operator. The default is 'equals'.
+     */
+    operator?: string;
     /**
      * The value of the detail field to match on.
      */
@@ -182,9 +294,13 @@ export interface GetDatasetsDetailFilter {
 }
 export interface GetEnvironmentDetailFilter {
     /**
-     * The name of the detail field to filter by. Currently only 'name' is supported.
+     * The field to filter by (e.g., 'name', 'id', 'description', etc.).
      */
     name: string;
+    /**
+     * The comparison operator. The default is 'equals'.
+     */
+    operator?: string;
     /**
      * The value of the detail field to match on.
      */
@@ -196,9 +312,13 @@ export interface GetEnvironmentDetailFilter {
 }
 export interface GetEnvironmentsDetailFilter {
     /**
-     * The name of the detail field to filter by. Currently only 'name' is supported.
+     * The field to filter by (e.g., 'name', 'id', 'description', etc.).
      */
     name: string;
+    /**
+     * The comparison operator. The default is 'equals'.
+     */
+    operator?: string;
     /**
      * The value of the detail field to match on.
      */
@@ -304,9 +424,13 @@ export interface GetRecipientsDetailFilter {
 }
 export interface GetSlosDetailFilter {
     /**
-     * The name of the detail field to filter by. Currently only 'name' is supported.
+     * The field to filter by (e.g., 'name', 'id', 'description', etc.).
      */
     name: string;
+    /**
+     * The comparison operator. The default is 'equals'.
+     */
+    operator?: string;
     /**
      * The value of the detail field to match on.
      */
@@ -421,4 +545,28 @@ export interface WebhookRecipientVariable {
      * The name of the variable
      */
     name: string;
+}
+export declare namespace config {
+    interface Features {
+        /**
+         * Column resource features.
+         */
+        column?: outputs.config.FeaturesColumn;
+        /**
+         * Dataset resource features.
+         */
+        dataset?: outputs.config.FeaturesDataset;
+    }
+    interface FeaturesColumn {
+        /**
+         * This changes the creation behavior of the column resource to import an existing column if it already exists, rather than erroring out.
+         */
+        importOnConflict?: boolean;
+    }
+    interface FeaturesDataset {
+        /**
+         * This changes the creation behavior of the dataset resource to import an existing dataset if it already exists, rather than erroring out.
+         */
+        importOnConflict?: boolean;
+    }
 }

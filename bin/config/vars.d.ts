@@ -1,3 +1,4 @@
+import * as outputs from "../types/output";
 /**
  * The Honeycomb API key to use. It can also be set via the `HONEYCOMB_API_KEY` or `HONEYCOMBIO_APIKEY` environment
  * variables.
@@ -22,3 +23,7 @@ export declare const apiUrl: string | undefined;
  * Enable the API client's debug logs. By default, a `TF_LOG` setting of debug or higher will enable this.
  */
 export declare const debug: boolean | undefined;
+/**
+ * The features block allows customization of the behavior of the Honeycomb Provider.
+ */
+export declare const features: outputs.config.Features | undefined;

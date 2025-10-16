@@ -121,7 +121,7 @@ export interface FlexibleBoardPanel {
     /**
      * Manages the position of the panel on the board.
      */
-    positions?: outputs.FlexibleBoardPanelPosition[];
+    position?: outputs.FlexibleBoardPanelPosition;
     /**
      * A query panel to be displayed on the Board.
      */
@@ -131,7 +131,11 @@ export interface FlexibleBoardPanel {
      */
     sloPanels?: outputs.FlexibleBoardPanelSloPanel[];
     /**
-     * The panel type, either "query" or "slo".
+     * A text panel to be displayed on the Board.
+     */
+    textPanels?: outputs.FlexibleBoardPanelTextPanel[];
+    /**
+     * The panel type, either "query", "slo", or "text".
      */
     type: string;
 }
@@ -219,6 +223,13 @@ export interface FlexibleBoardPanelSloPanel {
      * SLO ID to display in this panel.
      */
     sloId: string;
+}
+
+export interface FlexibleBoardPanelTextPanel {
+    /**
+     * The content of the text panel. Supports Markdown.
+     */
+    content: string;
 }
 
 export interface GetAuthMetadataApiKeyAccess {
@@ -578,3 +589,30 @@ export interface WebhookRecipientVariable {
     name: string;
 }
 
+export namespace config {
+    export interface Features {
+        /**
+         * Column resource features.
+         */
+        column?: outputs.config.FeaturesColumn;
+        /**
+         * Dataset resource features.
+         */
+        dataset?: outputs.config.FeaturesDataset;
+    }
+
+    export interface FeaturesColumn {
+        /**
+         * This changes the creation behavior of the column resource to import an existing column if it already exists, rather than erroring out.
+         */
+        importOnConflict?: boolean;
+    }
+
+    export interface FeaturesDataset {
+        /**
+         * This changes the creation behavior of the dataset resource to import an existing dataset if it already exists, rather than erroring out.
+         */
+        importOnConflict?: boolean;
+    }
+
+}
