@@ -16,7 +16,7 @@ class DatasetDefinition extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     static get(name, id, state, opts) {
-        return new DatasetDefinition(name, state, Object.assign(Object.assign({}, opts), { id: id }));
+        return new DatasetDefinition(name, state, { ...opts, id: id });
     }
     /**
      * Returns true if the given object is an instance of DatasetDefinition.  This is designed to work even
@@ -33,24 +33,24 @@ class DatasetDefinition extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState;
-            resourceInputs["column"] = state ? state.column : undefined;
-            resourceInputs["columnType"] = state ? state.columnType : undefined;
-            resourceInputs["dataset"] = state ? state.dataset : undefined;
-            resourceInputs["datasetDefinitionId"] = state ? state.datasetDefinitionId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["column"] = state?.column;
+            resourceInputs["columnType"] = state?.columnType;
+            resourceInputs["dataset"] = state?.dataset;
+            resourceInputs["datasetDefinitionId"] = state?.datasetDefinitionId;
+            resourceInputs["name"] = state?.name;
         }
         else {
             const args = argsOrState;
-            if ((!args || args.column === undefined) && !opts.urn) {
+            if (args?.column === undefined && !opts.urn) {
                 throw new Error("Missing required property 'column'");
             }
-            if ((!args || args.dataset === undefined) && !opts.urn) {
+            if (args?.dataset === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataset'");
             }
-            resourceInputs["column"] = args ? args.column : undefined;
-            resourceInputs["dataset"] = args ? args.dataset : undefined;
-            resourceInputs["datasetDefinitionId"] = args ? args.datasetDefinitionId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["column"] = args?.column;
+            resourceInputs["dataset"] = args?.dataset;
+            resourceInputs["datasetDefinitionId"] = args?.datasetDefinitionId;
+            resourceInputs["name"] = args?.name;
             resourceInputs["columnType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

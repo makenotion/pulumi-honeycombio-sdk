@@ -33,12 +33,12 @@ class Provider extends pulumi.ProviderResource {
         let resourceInputs = {};
         opts = opts || {};
         {
-            resourceInputs["apiKey"] = (args === null || args === void 0 ? void 0 : args.apiKey) ? pulumi.secret(args.apiKey) : undefined;
-            resourceInputs["apiKeyId"] = args ? args.apiKeyId : undefined;
-            resourceInputs["apiKeySecret"] = (args === null || args === void 0 ? void 0 : args.apiKeySecret) ? pulumi.secret(args.apiKeySecret) : undefined;
-            resourceInputs["apiUrl"] = args ? args.apiUrl : undefined;
-            resourceInputs["debug"] = pulumi.output(args ? args.debug : undefined).apply(JSON.stringify);
-            resourceInputs["features"] = pulumi.output(args ? args.features : undefined).apply(JSON.stringify);
+            resourceInputs["apiKey"] = args?.apiKey ? pulumi.secret(args.apiKey) : undefined;
+            resourceInputs["apiKeyId"] = args?.apiKeyId;
+            resourceInputs["apiKeySecret"] = args?.apiKeySecret ? pulumi.secret(args.apiKeySecret) : undefined;
+            resourceInputs["apiUrl"] = args?.apiUrl;
+            resourceInputs["debug"] = pulumi.output(args?.debug).apply(JSON.stringify);
+            resourceInputs["features"] = pulumi.output(args?.features).apply(JSON.stringify);
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["apiKey", "apiKeySecret"] };

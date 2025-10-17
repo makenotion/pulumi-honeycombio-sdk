@@ -16,7 +16,7 @@ class EmailRecipient extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     static get(name, id, state, opts) {
-        return new EmailRecipient(name, state, Object.assign(Object.assign({}, opts), { id: id }));
+        return new EmailRecipient(name, state, { ...opts, id: id });
     }
     /**
      * Returns true if the given object is an instance of EmailRecipient.  This is designed to work even
@@ -33,16 +33,16 @@ class EmailRecipient extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState;
-            resourceInputs["address"] = state ? state.address : undefined;
-            resourceInputs["emailRecipientId"] = state ? state.emailRecipientId : undefined;
+            resourceInputs["address"] = state?.address;
+            resourceInputs["emailRecipientId"] = state?.emailRecipientId;
         }
         else {
             const args = argsOrState;
-            if ((!args || args.address === undefined) && !opts.urn) {
+            if (args?.address === undefined && !opts.urn) {
                 throw new Error("Missing required property 'address'");
             }
-            resourceInputs["address"] = args ? args.address : undefined;
-            resourceInputs["emailRecipientId"] = args ? args.emailRecipientId : undefined;
+            resourceInputs["address"] = args?.address;
+            resourceInputs["emailRecipientId"] = args?.emailRecipientId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EmailRecipient.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

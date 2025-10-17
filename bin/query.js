@@ -16,7 +16,7 @@ class Query extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     static get(name, id, state, opts) {
-        return new Query(name, state, Object.assign(Object.assign({}, opts), { id: id }));
+        return new Query(name, state, { ...opts, id: id });
     }
     /**
      * Returns true if the given object is an instance of Query.  This is designed to work even
@@ -33,16 +33,16 @@ class Query extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState;
-            resourceInputs["dataset"] = state ? state.dataset : undefined;
-            resourceInputs["queryJson"] = state ? state.queryJson : undefined;
+            resourceInputs["dataset"] = state?.dataset;
+            resourceInputs["queryJson"] = state?.queryJson;
         }
         else {
             const args = argsOrState;
-            if ((!args || args.queryJson === undefined) && !opts.urn) {
+            if (args?.queryJson === undefined && !opts.urn) {
                 throw new Error("Missing required property 'queryJson'");
             }
-            resourceInputs["dataset"] = args ? args.dataset : undefined;
-            resourceInputs["queryJson"] = args ? args.queryJson : undefined;
+            resourceInputs["dataset"] = args?.dataset;
+            resourceInputs["queryJson"] = args?.queryJson;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Query.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

@@ -16,7 +16,7 @@ class Environment extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     static get(name, id, state, opts) {
-        return new Environment(name, state, Object.assign(Object.assign({}, opts), { id: id }));
+        return new Environment(name, state, { ...opts, id: id });
     }
     /**
      * Returns true if the given object is an instance of Environment.  This is designed to work even
@@ -33,18 +33,18 @@ class Environment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState;
-            resourceInputs["color"] = state ? state.color : undefined;
-            resourceInputs["deleteProtected"] = state ? state.deleteProtected : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["slug"] = state ? state.slug : undefined;
+            resourceInputs["color"] = state?.color;
+            resourceInputs["deleteProtected"] = state?.deleteProtected;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["slug"] = state?.slug;
         }
         else {
             const args = argsOrState;
-            resourceInputs["color"] = args ? args.color : undefined;
-            resourceInputs["deleteProtected"] = args ? args.deleteProtected : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["color"] = args?.color;
+            resourceInputs["deleteProtected"] = args?.deleteProtected;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
             resourceInputs["slug"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

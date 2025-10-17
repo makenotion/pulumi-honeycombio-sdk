@@ -16,7 +16,7 @@ class WebhookRecipient extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     static get(name, id, state, opts) {
-        return new WebhookRecipient(name, state, Object.assign(Object.assign({}, opts), { id: id }));
+        return new WebhookRecipient(name, state, { ...opts, id: id });
     }
     /**
      * Returns true if the given object is an instance of WebhookRecipient.  This is designed to work even
@@ -33,24 +33,24 @@ class WebhookRecipient extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState;
-            resourceInputs["headers"] = state ? state.headers : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["secret"] = state ? state.secret : undefined;
-            resourceInputs["templates"] = state ? state.templates : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
-            resourceInputs["variables"] = state ? state.variables : undefined;
+            resourceInputs["headers"] = state?.headers;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["secret"] = state?.secret;
+            resourceInputs["templates"] = state?.templates;
+            resourceInputs["url"] = state?.url;
+            resourceInputs["variables"] = state?.variables;
         }
         else {
             const args = argsOrState;
-            if ((!args || args.url === undefined) && !opts.urn) {
+            if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            resourceInputs["headers"] = args ? args.headers : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["secret"] = (args === null || args === void 0 ? void 0 : args.secret) ? pulumi.secret(args.secret) : undefined;
-            resourceInputs["templates"] = args ? args.templates : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
-            resourceInputs["variables"] = args ? args.variables : undefined;
+            resourceInputs["headers"] = args?.headers;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
+            resourceInputs["templates"] = args?.templates;
+            resourceInputs["url"] = args?.url;
+            resourceInputs["variables"] = args?.variables;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["secret"] };

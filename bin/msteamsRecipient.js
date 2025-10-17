@@ -16,7 +16,7 @@ class MsteamsRecipient extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     static get(name, id, state, opts) {
-        return new MsteamsRecipient(name, state, Object.assign(Object.assign({}, opts), { id: id }));
+        return new MsteamsRecipient(name, state, { ...opts, id: id });
     }
     /**
      * Returns true if the given object is an instance of MsteamsRecipient.  This is designed to work even
@@ -33,18 +33,18 @@ class MsteamsRecipient extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState;
-            resourceInputs["msteamsRecipientId"] = state ? state.msteamsRecipientId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["msteamsRecipientId"] = state?.msteamsRecipientId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["url"] = state?.url;
         }
         else {
             const args = argsOrState;
-            if ((!args || args.url === undefined) && !opts.urn) {
+            if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            resourceInputs["msteamsRecipientId"] = args ? args.msteamsRecipientId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["msteamsRecipientId"] = args?.msteamsRecipientId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["url"] = args?.url;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MsteamsRecipient.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

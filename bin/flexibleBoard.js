@@ -16,7 +16,7 @@ class FlexibleBoard extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     static get(name, id, state, opts) {
-        return new FlexibleBoard(name, state, Object.assign(Object.assign({}, opts), { id: id }));
+        return new FlexibleBoard(name, state, { ...opts, id: id });
     }
     /**
      * Returns true if the given object is an instance of FlexibleBoard.  This is designed to work even
@@ -33,18 +33,18 @@ class FlexibleBoard extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState;
-            resourceInputs["boardUrl"] = state ? state.boardUrl : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["panels"] = state ? state.panels : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["boardUrl"] = state?.boardUrl;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["panels"] = state?.panels;
+            resourceInputs["tags"] = state?.tags;
         }
         else {
             const args = argsOrState;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["panels"] = args ? args.panels : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["panels"] = args?.panels;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["boardUrl"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
