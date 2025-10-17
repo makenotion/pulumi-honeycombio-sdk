@@ -35,12 +35,12 @@ export class PagerdutyRecipient extends pulumi.CustomResource {
     /**
      * The key of the PagerDuty Integration to send the notification to
      */
-    public readonly integrationKey!: pulumi.Output<string>;
+    declare public readonly integrationKey: pulumi.Output<string>;
     /**
      * The name of the PagerDuty Integration to send the notification to
      */
-    public readonly integrationName!: pulumi.Output<string>;
-    public readonly pagerdutyRecipientId!: pulumi.Output<string>;
+    declare public readonly integrationName: pulumi.Output<string>;
+    declare public readonly pagerdutyRecipientId: pulumi.Output<string>;
 
     /**
      * Create a PagerdutyRecipient resource with the given unique name, arguments, and options.
@@ -55,20 +55,20 @@ export class PagerdutyRecipient extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PagerdutyRecipientState | undefined;
-            resourceInputs["integrationKey"] = state ? state.integrationKey : undefined;
-            resourceInputs["integrationName"] = state ? state.integrationName : undefined;
-            resourceInputs["pagerdutyRecipientId"] = state ? state.pagerdutyRecipientId : undefined;
+            resourceInputs["integrationKey"] = state?.integrationKey;
+            resourceInputs["integrationName"] = state?.integrationName;
+            resourceInputs["pagerdutyRecipientId"] = state?.pagerdutyRecipientId;
         } else {
             const args = argsOrState as PagerdutyRecipientArgs | undefined;
-            if ((!args || args.integrationKey === undefined) && !opts.urn) {
+            if (args?.integrationKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'integrationKey'");
             }
-            if ((!args || args.integrationName === undefined) && !opts.urn) {
+            if (args?.integrationName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'integrationName'");
             }
             resourceInputs["integrationKey"] = args?.integrationKey ? pulumi.secret(args.integrationKey) : undefined;
-            resourceInputs["integrationName"] = args ? args.integrationName : undefined;
-            resourceInputs["pagerdutyRecipientId"] = args ? args.pagerdutyRecipientId : undefined;
+            resourceInputs["integrationName"] = args?.integrationName;
+            resourceInputs["pagerdutyRecipientId"] = args?.pagerdutyRecipientId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["integrationKey"] };

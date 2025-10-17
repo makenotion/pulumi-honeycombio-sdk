@@ -35,23 +35,23 @@ export class Environment extends pulumi.CustomResource {
     /**
      * The color of the Environment. If one is not provided, a random color will be assigned.
      */
-    public readonly color!: pulumi.Output<string>;
+    declare public readonly color: pulumi.Output<string>;
     /**
      * The current delete protection status of the Environment. Cannot be set to false on creation.
      */
-    public readonly deleteProtected!: pulumi.Output<boolean>;
+    declare public readonly deleteProtected: pulumi.Output<boolean>;
     /**
      * The Environment's description.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The name of the Environment.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The slug of the Environment.
      */
-    public /*out*/ readonly slug!: pulumi.Output<string>;
+    declare public /*out*/ readonly slug: pulumi.Output<string>;
 
     /**
      * Create a Environment resource with the given unique name, arguments, and options.
@@ -66,17 +66,17 @@ export class Environment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnvironmentState | undefined;
-            resourceInputs["color"] = state ? state.color : undefined;
-            resourceInputs["deleteProtected"] = state ? state.deleteProtected : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["slug"] = state ? state.slug : undefined;
+            resourceInputs["color"] = state?.color;
+            resourceInputs["deleteProtected"] = state?.deleteProtected;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["slug"] = state?.slug;
         } else {
             const args = argsOrState as EnvironmentArgs | undefined;
-            resourceInputs["color"] = args ? args.color : undefined;
-            resourceInputs["deleteProtected"] = args ? args.deleteProtected : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["color"] = args?.color;
+            resourceInputs["deleteProtected"] = args?.deleteProtected;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
             resourceInputs["slug"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

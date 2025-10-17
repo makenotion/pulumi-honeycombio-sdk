@@ -36,37 +36,37 @@ export class Slo extends pulumi.CustomResource {
      * The dataset this SLO is created in. Will be deprecated in a future release. Must be the same dataset as the SLI unless
      * the SLI Derived Column is Environment-wide.
      */
-    public readonly dataset!: pulumi.Output<string>;
+    declare public readonly dataset: pulumi.Output<string>;
     /**
      * The datasets the SLO is evaluated on.
      */
-    public readonly datasets!: pulumi.Output<string[]>;
+    declare public readonly datasets: pulumi.Output<string[]>;
     /**
      * A description of the SLO's intent and context.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of the SLO.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The alias of the Derived Column that will be used as the SLI to indicate event success. The derived column used as the
      * SLI must be in the same dataset as the SLO. Additionally, the column evaluation should consistently return nil, true, or
      * false, as these are the only valid values for an SLI.
      */
-    public readonly sli!: pulumi.Output<string>;
+    declare public readonly sli: pulumi.Output<string>;
     /**
      * A map of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     /**
      * The percentage of qualified events that you expect to succeed during the `time_period`.
      */
-    public readonly targetPercentage!: pulumi.Output<number>;
+    declare public readonly targetPercentage: pulumi.Output<number>;
     /**
      * The time period, in days, over which your SLO will be evaluated.
      */
-    public readonly timePeriod!: pulumi.Output<number>;
+    declare public readonly timePeriod: pulumi.Output<number>;
 
     /**
      * Create a Slo resource with the given unique name, arguments, and options.
@@ -81,33 +81,33 @@ export class Slo extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SloState | undefined;
-            resourceInputs["dataset"] = state ? state.dataset : undefined;
-            resourceInputs["datasets"] = state ? state.datasets : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["sli"] = state ? state.sli : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["targetPercentage"] = state ? state.targetPercentage : undefined;
-            resourceInputs["timePeriod"] = state ? state.timePeriod : undefined;
+            resourceInputs["dataset"] = state?.dataset;
+            resourceInputs["datasets"] = state?.datasets;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["sli"] = state?.sli;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["targetPercentage"] = state?.targetPercentage;
+            resourceInputs["timePeriod"] = state?.timePeriod;
         } else {
             const args = argsOrState as SloArgs | undefined;
-            if ((!args || args.sli === undefined) && !opts.urn) {
+            if (args?.sli === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sli'");
             }
-            if ((!args || args.targetPercentage === undefined) && !opts.urn) {
+            if (args?.targetPercentage === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetPercentage'");
             }
-            if ((!args || args.timePeriod === undefined) && !opts.urn) {
+            if (args?.timePeriod === undefined && !opts.urn) {
                 throw new Error("Missing required property 'timePeriod'");
             }
-            resourceInputs["dataset"] = args ? args.dataset : undefined;
-            resourceInputs["datasets"] = args ? args.datasets : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["sli"] = args ? args.sli : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["targetPercentage"] = args ? args.targetPercentage : undefined;
-            resourceInputs["timePeriod"] = args ? args.timePeriod : undefined;
+            resourceInputs["dataset"] = args?.dataset;
+            resourceInputs["datasets"] = args?.datasets;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["sli"] = args?.sli;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["targetPercentage"] = args?.targetPercentage;
+            resourceInputs["timePeriod"] = args?.timePeriod;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Slo.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

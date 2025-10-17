@@ -37,27 +37,27 @@ export class WebhookRecipient extends pulumi.CustomResource {
     /**
      * Custom headers for webhooks
      */
-    public readonly headers!: pulumi.Output<outputs.WebhookRecipientHeader[] | undefined>;
+    declare public readonly headers: pulumi.Output<outputs.WebhookRecipientHeader[] | undefined>;
     /**
      * The name of this Webhook recipient.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The secret to include when sending the notification to the webhook.
      */
-    public readonly secret!: pulumi.Output<string | undefined>;
+    declare public readonly secret: pulumi.Output<string | undefined>;
     /**
      * Template for custom webhook payloads
      */
-    public readonly templates!: pulumi.Output<outputs.WebhookRecipientTemplate[] | undefined>;
+    declare public readonly templates: pulumi.Output<outputs.WebhookRecipientTemplate[] | undefined>;
     /**
      * The URL of the endpoint the notification will be sent to.
      */
-    public readonly url!: pulumi.Output<string>;
+    declare public readonly url: pulumi.Output<string>;
     /**
      * Variables for webhook templates
      */
-    public readonly variables!: pulumi.Output<outputs.WebhookRecipientVariable[] | undefined>;
+    declare public readonly variables: pulumi.Output<outputs.WebhookRecipientVariable[] | undefined>;
 
     /**
      * Create a WebhookRecipient resource with the given unique name, arguments, and options.
@@ -72,23 +72,23 @@ export class WebhookRecipient extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WebhookRecipientState | undefined;
-            resourceInputs["headers"] = state ? state.headers : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["secret"] = state ? state.secret : undefined;
-            resourceInputs["templates"] = state ? state.templates : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
-            resourceInputs["variables"] = state ? state.variables : undefined;
+            resourceInputs["headers"] = state?.headers;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["secret"] = state?.secret;
+            resourceInputs["templates"] = state?.templates;
+            resourceInputs["url"] = state?.url;
+            resourceInputs["variables"] = state?.variables;
         } else {
             const args = argsOrState as WebhookRecipientArgs | undefined;
-            if ((!args || args.url === undefined) && !opts.urn) {
+            if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            resourceInputs["headers"] = args ? args.headers : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["headers"] = args?.headers;
+            resourceInputs["name"] = args?.name;
             resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
-            resourceInputs["templates"] = args ? args.templates : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
-            resourceInputs["variables"] = args ? args.variables : undefined;
+            resourceInputs["templates"] = args?.templates;
+            resourceInputs["url"] = args?.url;
+            resourceInputs["variables"] = args?.variables;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["secret"] };

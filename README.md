@@ -8,7 +8,10 @@ npm i
 pulumi package gen-sdk --local terraform-provider@0.13.0 honeycombio/honeycombio 0.42.0
 npm run build
 cp -r sdk/nodejs/* .
+git restore README.md
+rm -r sdk
 ```
+After the above steps, manually update this `README.md` file. 
 
 It is important that the version of the terraform-provider plugin used to generate this SDK matches the one installed in the spacelift runner docker image.
 To update the terraform-provider version:

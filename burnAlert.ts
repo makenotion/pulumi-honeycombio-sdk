@@ -37,35 +37,35 @@ export class BurnAlert extends pulumi.CustomResource {
     /**
      * The alert type of this Burn Alert.
      */
-    public readonly alertType!: pulumi.Output<string>;
+    declare public readonly alertType: pulumi.Output<string>;
     /**
      * The percent the budget has decreased over the budget rate window.
      */
-    public readonly budgetRateDecreasePercent!: pulumi.Output<number | undefined>;
+    declare public readonly budgetRateDecreasePercent: pulumi.Output<number | undefined>;
     /**
      * The time period, in minutes, over which a budget rate will be calculated.
      */
-    public readonly budgetRateWindowMinutes!: pulumi.Output<number | undefined>;
+    declare public readonly budgetRateWindowMinutes: pulumi.Output<number | undefined>;
     /**
      * The dataset this Burn Alert is associated with. Will be deprecated in a future release.
      */
-    public readonly dataset!: pulumi.Output<string>;
+    declare public readonly dataset: pulumi.Output<string>;
     /**
      * A description for this Burn Alert.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The amount of time, in minutes, remaining before the SLO's error budget will be exhausted and the alert will fire.
      */
-    public readonly exhaustionMinutes!: pulumi.Output<number | undefined>;
+    declare public readonly exhaustionMinutes: pulumi.Output<number | undefined>;
     /**
      * Zero or more recipients to notify when the resource fires.
      */
-    public readonly recipients!: pulumi.Output<outputs.BurnAlertRecipient[] | undefined>;
+    declare public readonly recipients: pulumi.Output<outputs.BurnAlertRecipient[] | undefined>;
     /**
      * The ID of the SLO that this Burn Alert is associated with.
      */
-    public readonly sloId!: pulumi.Output<string>;
+    declare public readonly sloId: pulumi.Output<string>;
 
     /**
      * Create a BurnAlert resource with the given unique name, arguments, and options.
@@ -80,27 +80,27 @@ export class BurnAlert extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BurnAlertState | undefined;
-            resourceInputs["alertType"] = state ? state.alertType : undefined;
-            resourceInputs["budgetRateDecreasePercent"] = state ? state.budgetRateDecreasePercent : undefined;
-            resourceInputs["budgetRateWindowMinutes"] = state ? state.budgetRateWindowMinutes : undefined;
-            resourceInputs["dataset"] = state ? state.dataset : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["exhaustionMinutes"] = state ? state.exhaustionMinutes : undefined;
-            resourceInputs["recipients"] = state ? state.recipients : undefined;
-            resourceInputs["sloId"] = state ? state.sloId : undefined;
+            resourceInputs["alertType"] = state?.alertType;
+            resourceInputs["budgetRateDecreasePercent"] = state?.budgetRateDecreasePercent;
+            resourceInputs["budgetRateWindowMinutes"] = state?.budgetRateWindowMinutes;
+            resourceInputs["dataset"] = state?.dataset;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["exhaustionMinutes"] = state?.exhaustionMinutes;
+            resourceInputs["recipients"] = state?.recipients;
+            resourceInputs["sloId"] = state?.sloId;
         } else {
             const args = argsOrState as BurnAlertArgs | undefined;
-            if ((!args || args.sloId === undefined) && !opts.urn) {
+            if (args?.sloId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sloId'");
             }
-            resourceInputs["alertType"] = args ? args.alertType : undefined;
-            resourceInputs["budgetRateDecreasePercent"] = args ? args.budgetRateDecreasePercent : undefined;
-            resourceInputs["budgetRateWindowMinutes"] = args ? args.budgetRateWindowMinutes : undefined;
-            resourceInputs["dataset"] = args ? args.dataset : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["exhaustionMinutes"] = args ? args.exhaustionMinutes : undefined;
-            resourceInputs["recipients"] = args ? args.recipients : undefined;
-            resourceInputs["sloId"] = args ? args.sloId : undefined;
+            resourceInputs["alertType"] = args?.alertType;
+            resourceInputs["budgetRateDecreasePercent"] = args?.budgetRateDecreasePercent;
+            resourceInputs["budgetRateWindowMinutes"] = args?.budgetRateWindowMinutes;
+            resourceInputs["dataset"] = args?.dataset;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["exhaustionMinutes"] = args?.exhaustionMinutes;
+            resourceInputs["recipients"] = args?.recipients;
+            resourceInputs["sloId"] = args?.sloId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BurnAlert.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

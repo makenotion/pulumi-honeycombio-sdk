@@ -37,31 +37,31 @@ export class ApiKey extends pulumi.CustomResource {
     /**
      * Whether the API key is disabled.
      */
-    public readonly disabled!: pulumi.Output<boolean>;
+    declare public readonly disabled: pulumi.Output<boolean>;
     /**
      * The Environment ID the API key is scoped to.
      */
-    public readonly environmentId!: pulumi.Output<string>;
+    declare public readonly environmentId: pulumi.Output<string>;
     /**
      * The API key as a string. This is only available when creating a new key.
      */
-    public /*out*/ readonly key!: pulumi.Output<string>;
+    declare public /*out*/ readonly key: pulumi.Output<string>;
     /**
      * The name of the API Key.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Permissions control what actions the API key can perform.
      */
-    public readonly permissions!: pulumi.Output<outputs.ApiKeyPermission[] | undefined>;
+    declare public readonly permissions: pulumi.Output<outputs.ApiKeyPermission[] | undefined>;
     /**
      * The secret portion of the API key. This is only available when creating a new key.
      */
-    public /*out*/ readonly secret!: pulumi.Output<string>;
+    declare public /*out*/ readonly secret: pulumi.Output<string>;
     /**
      * The type of the API key.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a ApiKey resource with the given unique name, arguments, and options.
@@ -76,26 +76,26 @@ export class ApiKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApiKeyState | undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["environmentId"] = state ? state.environmentId : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["permissions"] = state ? state.permissions : undefined;
-            resourceInputs["secret"] = state ? state.secret : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["environmentId"] = state?.environmentId;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["permissions"] = state?.permissions;
+            resourceInputs["secret"] = state?.secret;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as ApiKeyArgs | undefined;
-            if ((!args || args.environmentId === undefined) && !opts.urn) {
+            if (args?.environmentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environmentId'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["environmentId"] = args ? args.environmentId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["permissions"] = args ? args.permissions : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["environmentId"] = args?.environmentId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["permissions"] = args?.permissions;
+            resourceInputs["type"] = args?.type;
             resourceInputs["key"] = undefined /*out*/;
             resourceInputs["secret"] = undefined /*out*/;
         }

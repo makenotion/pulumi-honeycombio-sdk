@@ -37,62 +37,62 @@ export class Trigger extends pulumi.CustomResource {
     /**
      * Control when the Trigger will send a notification.
      */
-    public readonly alertType!: pulumi.Output<string>;
+    declare public readonly alertType: pulumi.Output<string>;
     /**
      * A configuration block that allows you to receive notifications when the delta between values in your data, compared to a
      * previous time period, cross thresholds you configure.
      */
-    public readonly baselineDetails!: pulumi.Output<outputs.TriggerBaselineDetail[] | undefined>;
+    declare public readonly baselineDetails: pulumi.Output<outputs.TriggerBaselineDetail[] | undefined>;
     /**
      * The dataset this Trigger is associated with.
      */
-    public readonly dataset!: pulumi.Output<string>;
+    declare public readonly dataset: pulumi.Output<string>;
     /**
      * A description of the Trigger.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The state of the Trigger. If true, the Trigger will not be run.
      */
-    public readonly disabled!: pulumi.Output<boolean>;
+    declare public readonly disabled: pulumi.Output<boolean>;
     /**
      * The schedule that determines when the trigger is run. When the time is within the scheduled window, the trigger will be
      * run at the specified frequency. Outside of the window, the trigger will not be run.If no schedule is specified, the
      * trigger will be run at the specified frequency at all times.
      */
-    public readonly evaluationSchedules!: pulumi.Output<outputs.TriggerEvaluationSchedule[] | undefined>;
+    declare public readonly evaluationSchedules: pulumi.Output<outputs.TriggerEvaluationSchedule[] | undefined>;
     /**
      * The interval (in seconds) in which to check the results of the query's calculation against the threshold. This value
      * must be divisible by 60, between 60 and 86400 (between 1 minute and 1 day), and not be more than 4 times the query's
      * duration.
      */
-    public readonly frequency!: pulumi.Output<number>;
+    declare public readonly frequency: pulumi.Output<number>;
     /**
      * The name of the Trigger.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the Query that the Trigger will execute.
      */
-    public readonly queryId!: pulumi.Output<string | undefined>;
+    declare public readonly queryId: pulumi.Output<string | undefined>;
     /**
      * The QuerySpec JSON for the query that the Trigger will execute. Providing the QuerySpec JSON directly allows for
      * additional validation that the QuerySpec is valid as a Trigger Query. While the JSON can be constructed manually, it is
      * easiest to use the `honeycombio.getQuerySpecification` data source.
      */
-    public readonly queryJson!: pulumi.Output<string | undefined>;
+    declare public readonly queryJson: pulumi.Output<string | undefined>;
     /**
      * Zero or more recipients to notify when the resource fires.
      */
-    public readonly recipients!: pulumi.Output<outputs.TriggerRecipient[] | undefined>;
+    declare public readonly recipients: pulumi.Output<outputs.TriggerRecipient[] | undefined>;
     /**
      * A map of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     /**
      * A block describing the threshold for the Trigger to fire.
      */
-    public readonly thresholds!: pulumi.Output<outputs.TriggerThreshold[] | undefined>;
+    declare public readonly thresholds: pulumi.Output<outputs.TriggerThreshold[] | undefined>;
 
     /**
      * Create a Trigger resource with the given unique name, arguments, and options.
@@ -107,34 +107,34 @@ export class Trigger extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TriggerState | undefined;
-            resourceInputs["alertType"] = state ? state.alertType : undefined;
-            resourceInputs["baselineDetails"] = state ? state.baselineDetails : undefined;
-            resourceInputs["dataset"] = state ? state.dataset : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["evaluationSchedules"] = state ? state.evaluationSchedules : undefined;
-            resourceInputs["frequency"] = state ? state.frequency : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["queryId"] = state ? state.queryId : undefined;
-            resourceInputs["queryJson"] = state ? state.queryJson : undefined;
-            resourceInputs["recipients"] = state ? state.recipients : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["thresholds"] = state ? state.thresholds : undefined;
+            resourceInputs["alertType"] = state?.alertType;
+            resourceInputs["baselineDetails"] = state?.baselineDetails;
+            resourceInputs["dataset"] = state?.dataset;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["evaluationSchedules"] = state?.evaluationSchedules;
+            resourceInputs["frequency"] = state?.frequency;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["queryId"] = state?.queryId;
+            resourceInputs["queryJson"] = state?.queryJson;
+            resourceInputs["recipients"] = state?.recipients;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["thresholds"] = state?.thresholds;
         } else {
             const args = argsOrState as TriggerArgs | undefined;
-            resourceInputs["alertType"] = args ? args.alertType : undefined;
-            resourceInputs["baselineDetails"] = args ? args.baselineDetails : undefined;
-            resourceInputs["dataset"] = args ? args.dataset : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["evaluationSchedules"] = args ? args.evaluationSchedules : undefined;
-            resourceInputs["frequency"] = args ? args.frequency : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["queryId"] = args ? args.queryId : undefined;
-            resourceInputs["queryJson"] = args ? args.queryJson : undefined;
-            resourceInputs["recipients"] = args ? args.recipients : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["thresholds"] = args ? args.thresholds : undefined;
+            resourceInputs["alertType"] = args?.alertType;
+            resourceInputs["baselineDetails"] = args?.baselineDetails;
+            resourceInputs["dataset"] = args?.dataset;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["evaluationSchedules"] = args?.evaluationSchedules;
+            resourceInputs["frequency"] = args?.frequency;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["queryId"] = args?.queryId;
+            resourceInputs["queryJson"] = args?.queryJson;
+            resourceInputs["recipients"] = args?.recipients;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["thresholds"] = args?.thresholds;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Trigger.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
