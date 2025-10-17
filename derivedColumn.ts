@@ -35,21 +35,21 @@ export class DerivedColumn extends pulumi.CustomResource {
     /**
      * The alias of the derived column. Must be unique within the dataset or environment.
      */
-    public readonly alias!: pulumi.Output<string>;
+    declare public readonly alias: pulumi.Output<string>;
     /**
      * The dataset this derived column belongs to. If not set, it will be Environment-wide.
      */
-    public readonly dataset!: pulumi.Output<string | undefined>;
-    public readonly derivedColumnId!: pulumi.Output<string>;
+    declare public readonly dataset: pulumi.Output<string | undefined>;
+    declare public readonly derivedColumnId: pulumi.Output<string>;
     /**
      * A description of the derived column.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The formula of the derived column. See [Derived Column
      * Syntax](https://docs.honeycomb.io/reference/derived-column-formula/syntax/).
      */
-    public readonly expression!: pulumi.Output<string>;
+    declare public readonly expression: pulumi.Output<string>;
 
     /**
      * Create a DerivedColumn resource with the given unique name, arguments, and options.
@@ -64,24 +64,24 @@ export class DerivedColumn extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DerivedColumnState | undefined;
-            resourceInputs["alias"] = state ? state.alias : undefined;
-            resourceInputs["dataset"] = state ? state.dataset : undefined;
-            resourceInputs["derivedColumnId"] = state ? state.derivedColumnId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["expression"] = state ? state.expression : undefined;
+            resourceInputs["alias"] = state?.alias;
+            resourceInputs["dataset"] = state?.dataset;
+            resourceInputs["derivedColumnId"] = state?.derivedColumnId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["expression"] = state?.expression;
         } else {
             const args = argsOrState as DerivedColumnArgs | undefined;
-            if ((!args || args.alias === undefined) && !opts.urn) {
+            if (args?.alias === undefined && !opts.urn) {
                 throw new Error("Missing required property 'alias'");
             }
-            if ((!args || args.expression === undefined) && !opts.urn) {
+            if (args?.expression === undefined && !opts.urn) {
                 throw new Error("Missing required property 'expression'");
             }
-            resourceInputs["alias"] = args ? args.alias : undefined;
-            resourceInputs["dataset"] = args ? args.dataset : undefined;
-            resourceInputs["derivedColumnId"] = args ? args.derivedColumnId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["expression"] = args ? args.expression : undefined;
+            resourceInputs["alias"] = args?.alias;
+            resourceInputs["dataset"] = args?.dataset;
+            resourceInputs["derivedColumnId"] = args?.derivedColumnId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["expression"] = args?.expression;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DerivedColumn.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

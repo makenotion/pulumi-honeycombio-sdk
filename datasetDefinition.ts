@@ -35,20 +35,20 @@ export class DatasetDefinition extends pulumi.CustomResource {
     /**
      * The column to set the definition to. Must be the name of an existing Column or the alias of an existing Derived Column.
      */
-    public readonly column!: pulumi.Output<string>;
+    declare public readonly column: pulumi.Output<string>;
     /**
      * The type of the column assigned to the definition. Either `column` or `derived_column`.
      */
-    public /*out*/ readonly columnType!: pulumi.Output<string>;
+    declare public /*out*/ readonly columnType: pulumi.Output<string>;
     /**
      * The dataset to set the Dataset Definition for.
      */
-    public readonly dataset!: pulumi.Output<string>;
-    public readonly datasetDefinitionId!: pulumi.Output<string>;
+    declare public readonly dataset: pulumi.Output<string>;
+    declare public readonly datasetDefinitionId: pulumi.Output<string>;
     /**
      * The name of the definition being set.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a DatasetDefinition resource with the given unique name, arguments, and options.
@@ -63,23 +63,23 @@ export class DatasetDefinition extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatasetDefinitionState | undefined;
-            resourceInputs["column"] = state ? state.column : undefined;
-            resourceInputs["columnType"] = state ? state.columnType : undefined;
-            resourceInputs["dataset"] = state ? state.dataset : undefined;
-            resourceInputs["datasetDefinitionId"] = state ? state.datasetDefinitionId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["column"] = state?.column;
+            resourceInputs["columnType"] = state?.columnType;
+            resourceInputs["dataset"] = state?.dataset;
+            resourceInputs["datasetDefinitionId"] = state?.datasetDefinitionId;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as DatasetDefinitionArgs | undefined;
-            if ((!args || args.column === undefined) && !opts.urn) {
+            if (args?.column === undefined && !opts.urn) {
                 throw new Error("Missing required property 'column'");
             }
-            if ((!args || args.dataset === undefined) && !opts.urn) {
+            if (args?.dataset === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataset'");
             }
-            resourceInputs["column"] = args ? args.column : undefined;
-            resourceInputs["dataset"] = args ? args.dataset : undefined;
-            resourceInputs["datasetDefinitionId"] = args ? args.datasetDefinitionId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["column"] = args?.column;
+            resourceInputs["dataset"] = args?.dataset;
+            resourceInputs["datasetDefinitionId"] = args?.datasetDefinitionId;
+            resourceInputs["name"] = args?.name;
             resourceInputs["columnType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

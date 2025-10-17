@@ -16,7 +16,7 @@ class Board extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     static get(name, id, state, opts) {
-        return new Board(name, state, Object.assign(Object.assign({}, opts), { id: id }));
+        return new Board(name, state, { ...opts, id: id });
     }
     /**
      * Returns true if the given object is an instance of Board.  This is designed to work even
@@ -33,22 +33,22 @@ class Board extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState;
-            resourceInputs["boardUrl"] = state ? state.boardUrl : undefined;
-            resourceInputs["columnLayout"] = state ? state.columnLayout : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["queries"] = state ? state.queries : undefined;
-            resourceInputs["slos"] = state ? state.slos : undefined;
-            resourceInputs["style"] = state ? state.style : undefined;
+            resourceInputs["boardUrl"] = state?.boardUrl;
+            resourceInputs["columnLayout"] = state?.columnLayout;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["queries"] = state?.queries;
+            resourceInputs["slos"] = state?.slos;
+            resourceInputs["style"] = state?.style;
         }
         else {
             const args = argsOrState;
-            resourceInputs["columnLayout"] = args ? args.columnLayout : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["queries"] = args ? args.queries : undefined;
-            resourceInputs["slos"] = args ? args.slos : undefined;
-            resourceInputs["style"] = args ? args.style : undefined;
+            resourceInputs["columnLayout"] = args?.columnLayout;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["queries"] = args?.queries;
+            resourceInputs["slos"] = args?.slos;
+            resourceInputs["style"] = args?.style;
             resourceInputs["boardUrl"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

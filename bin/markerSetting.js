@@ -16,7 +16,7 @@ class MarkerSetting extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     static get(name, id, state, opts) {
-        return new MarkerSetting(name, state, Object.assign(Object.assign({}, opts), { id: id }));
+        return new MarkerSetting(name, state, { ...opts, id: id });
     }
     /**
      * Returns true if the given object is an instance of MarkerSetting.  This is designed to work even
@@ -33,25 +33,25 @@ class MarkerSetting extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState;
-            resourceInputs["color"] = state ? state.color : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["dataset"] = state ? state.dataset : undefined;
-            resourceInputs["markerSettingId"] = state ? state.markerSettingId : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["color"] = state?.color;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["dataset"] = state?.dataset;
+            resourceInputs["markerSettingId"] = state?.markerSettingId;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         }
         else {
             const args = argsOrState;
-            if ((!args || args.color === undefined) && !opts.urn) {
+            if (args?.color === undefined && !opts.urn) {
                 throw new Error("Missing required property 'color'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["color"] = args ? args.color : undefined;
-            resourceInputs["dataset"] = args ? args.dataset : undefined;
-            resourceInputs["markerSettingId"] = args ? args.markerSettingId : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["color"] = args?.color;
+            resourceInputs["dataset"] = args?.dataset;
+            resourceInputs["markerSettingId"] = args?.markerSettingId;
+            resourceInputs["type"] = args?.type;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }

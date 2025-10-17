@@ -31,22 +31,22 @@ export class Provider extends pulumi.ProviderResource {
      * The Honeycomb API key to use. It can also be set via the `HONEYCOMB_API_KEY` or `HONEYCOMBIO_APIKEY` environment
      * variables.
      */
-    public readonly apiKey!: pulumi.Output<string | undefined>;
+    declare public readonly apiKey: pulumi.Output<string | undefined>;
     /**
      * The ID portion of the Honeycomb Management API key to use. It can also be set via the `HONEYCOMB_KEY_ID` environment
      * variable.
      */
-    public readonly apiKeyId!: pulumi.Output<string | undefined>;
+    declare public readonly apiKeyId: pulumi.Output<string | undefined>;
     /**
      * The secret portion of the Honeycomb Management API key to use. It can also be set via the `HONEYCOMB_KEY_SECRET`
      * environment variable.
      */
-    public readonly apiKeySecret!: pulumi.Output<string | undefined>;
+    declare public readonly apiKeySecret: pulumi.Output<string | undefined>;
     /**
      * Override the URL of the Honeycomb API. Defaults to `https://api.honeycomb.io`. It can also be set via the
      * `HONEYCOMB_API_ENDPOINT` environment variable.
      */
-    public readonly apiUrl!: pulumi.Output<string | undefined>;
+    declare public readonly apiUrl: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -60,11 +60,11 @@ export class Provider extends pulumi.ProviderResource {
         opts = opts || {};
         {
             resourceInputs["apiKey"] = args?.apiKey ? pulumi.secret(args.apiKey) : undefined;
-            resourceInputs["apiKeyId"] = args ? args.apiKeyId : undefined;
+            resourceInputs["apiKeyId"] = args?.apiKeyId;
             resourceInputs["apiKeySecret"] = args?.apiKeySecret ? pulumi.secret(args.apiKeySecret) : undefined;
-            resourceInputs["apiUrl"] = args ? args.apiUrl : undefined;
-            resourceInputs["debug"] = pulumi.output(args ? args.debug : undefined).apply(JSON.stringify);
-            resourceInputs["features"] = pulumi.output(args ? args.features : undefined).apply(JSON.stringify);
+            resourceInputs["apiUrl"] = args?.apiUrl;
+            resourceInputs["debug"] = pulumi.output(args?.debug).apply(JSON.stringify);
+            resourceInputs["features"] = pulumi.output(args?.features).apply(JSON.stringify);
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["apiKey", "apiKeySecret"] };

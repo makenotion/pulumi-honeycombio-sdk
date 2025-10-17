@@ -35,31 +35,31 @@ export class Dataset extends pulumi.CustomResource {
     /**
      * ISO8601-formatted time the dataset was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The current delete protection status of the Dataset. Cannot be set to false on creation.
      */
-    public readonly deleteProtected!: pulumi.Output<boolean>;
+    declare public readonly deleteProtected: pulumi.Output<boolean>;
     /**
      * The Dataset's description.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The maximum unpacking depth of nested JSON fields.
      */
-    public readonly expandJsonDepth!: pulumi.Output<number>;
+    declare public readonly expandJsonDepth: pulumi.Output<number>;
     /**
      * ISO8601-formatted time the dataset was last written to (received event data).
      */
-    public /*out*/ readonly lastWrittenAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastWrittenAt: pulumi.Output<string>;
     /**
      * The name of the Dataset.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The slug of the Dataset.
      */
-    public /*out*/ readonly slug!: pulumi.Output<string>;
+    declare public /*out*/ readonly slug: pulumi.Output<string>;
 
     /**
      * Create a Dataset resource with the given unique name, arguments, and options.
@@ -74,19 +74,19 @@ export class Dataset extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatasetState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["deleteProtected"] = state ? state.deleteProtected : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["expandJsonDepth"] = state ? state.expandJsonDepth : undefined;
-            resourceInputs["lastWrittenAt"] = state ? state.lastWrittenAt : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["slug"] = state ? state.slug : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["deleteProtected"] = state?.deleteProtected;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["expandJsonDepth"] = state?.expandJsonDepth;
+            resourceInputs["lastWrittenAt"] = state?.lastWrittenAt;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["slug"] = state?.slug;
         } else {
             const args = argsOrState as DatasetArgs | undefined;
-            resourceInputs["deleteProtected"] = args ? args.deleteProtected : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["expandJsonDepth"] = args ? args.expandJsonDepth : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["deleteProtected"] = args?.deleteProtected;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["expandJsonDepth"] = args?.expandJsonDepth;
+            resourceInputs["name"] = args?.name;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["lastWrittenAt"] = undefined /*out*/;
             resourceInputs["slug"] = undefined /*out*/;

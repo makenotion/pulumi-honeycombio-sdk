@@ -16,7 +16,7 @@ class PagerdutyRecipient extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     static get(name, id, state, opts) {
-        return new PagerdutyRecipient(name, state, Object.assign(Object.assign({}, opts), { id: id }));
+        return new PagerdutyRecipient(name, state, { ...opts, id: id });
     }
     /**
      * Returns true if the given object is an instance of PagerdutyRecipient.  This is designed to work even
@@ -33,21 +33,21 @@ class PagerdutyRecipient extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState;
-            resourceInputs["integrationKey"] = state ? state.integrationKey : undefined;
-            resourceInputs["integrationName"] = state ? state.integrationName : undefined;
-            resourceInputs["pagerdutyRecipientId"] = state ? state.pagerdutyRecipientId : undefined;
+            resourceInputs["integrationKey"] = state?.integrationKey;
+            resourceInputs["integrationName"] = state?.integrationName;
+            resourceInputs["pagerdutyRecipientId"] = state?.pagerdutyRecipientId;
         }
         else {
             const args = argsOrState;
-            if ((!args || args.integrationKey === undefined) && !opts.urn) {
+            if (args?.integrationKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'integrationKey'");
             }
-            if ((!args || args.integrationName === undefined) && !opts.urn) {
+            if (args?.integrationName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'integrationName'");
             }
-            resourceInputs["integrationKey"] = (args === null || args === void 0 ? void 0 : args.integrationKey) ? pulumi.secret(args.integrationKey) : undefined;
-            resourceInputs["integrationName"] = args ? args.integrationName : undefined;
-            resourceInputs["pagerdutyRecipientId"] = args ? args.pagerdutyRecipientId : undefined;
+            resourceInputs["integrationKey"] = args?.integrationKey ? pulumi.secret(args.integrationKey) : undefined;
+            resourceInputs["integrationName"] = args?.integrationName;
+            resourceInputs["pagerdutyRecipientId"] = args?.pagerdutyRecipientId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["integrationKey"] };

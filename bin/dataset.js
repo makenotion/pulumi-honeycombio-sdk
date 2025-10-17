@@ -16,7 +16,7 @@ class Dataset extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     static get(name, id, state, opts) {
-        return new Dataset(name, state, Object.assign(Object.assign({}, opts), { id: id }));
+        return new Dataset(name, state, { ...opts, id: id });
     }
     /**
      * Returns true if the given object is an instance of Dataset.  This is designed to work even
@@ -33,20 +33,20 @@ class Dataset extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["deleteProtected"] = state ? state.deleteProtected : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["expandJsonDepth"] = state ? state.expandJsonDepth : undefined;
-            resourceInputs["lastWrittenAt"] = state ? state.lastWrittenAt : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["slug"] = state ? state.slug : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["deleteProtected"] = state?.deleteProtected;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["expandJsonDepth"] = state?.expandJsonDepth;
+            resourceInputs["lastWrittenAt"] = state?.lastWrittenAt;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["slug"] = state?.slug;
         }
         else {
             const args = argsOrState;
-            resourceInputs["deleteProtected"] = args ? args.deleteProtected : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["expandJsonDepth"] = args ? args.expandJsonDepth : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["deleteProtected"] = args?.deleteProtected;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["expandJsonDepth"] = args?.expandJsonDepth;
+            resourceInputs["name"] = args?.name;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["lastWrittenAt"] = undefined /*out*/;
             resourceInputs["slug"] = undefined /*out*/;

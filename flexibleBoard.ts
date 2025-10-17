@@ -37,23 +37,23 @@ export class FlexibleBoard extends pulumi.CustomResource {
     /**
      * The URL of the Board in the Honeycomb UI.
      */
-    public /*out*/ readonly boardUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly boardUrl: pulumi.Output<string>;
     /**
      * The description of the Board. Supports Markdown.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The name of the Board.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * List of panels to render on the board.
      */
-    public readonly panels!: pulumi.Output<outputs.FlexibleBoardPanel[] | undefined>;
+    declare public readonly panels: pulumi.Output<outputs.FlexibleBoardPanel[] | undefined>;
     /**
      * A map of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a FlexibleBoard resource with the given unique name, arguments, and options.
@@ -68,17 +68,17 @@ export class FlexibleBoard extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FlexibleBoardState | undefined;
-            resourceInputs["boardUrl"] = state ? state.boardUrl : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["panels"] = state ? state.panels : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["boardUrl"] = state?.boardUrl;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["panels"] = state?.panels;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as FlexibleBoardArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["panels"] = args ? args.panels : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["panels"] = args?.panels;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["boardUrl"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

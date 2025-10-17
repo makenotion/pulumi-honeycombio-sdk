@@ -37,33 +37,33 @@ export class Board extends pulumi.CustomResource {
     /**
      * The URL of the Board in the Honeycomb UI.
      */
-    public /*out*/ readonly boardUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly boardUrl: pulumi.Output<string>;
     /**
      * The number of columns to layout on the Board.
      */
-    public readonly columnLayout!: pulumi.Output<string>;
+    declare public readonly columnLayout: pulumi.Output<string>;
     /**
      * The description of the Board. Supports Markdown.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The name of the Board.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * A query to be displayed on the Board.
      */
-    public readonly queries!: pulumi.Output<outputs.BoardQuery[] | undefined>;
+    declare public readonly queries: pulumi.Output<outputs.BoardQuery[] | undefined>;
     /**
      * An SLO to be displayed on the Board.
      */
-    public readonly slos!: pulumi.Output<outputs.BoardSlo[] | undefined>;
+    declare public readonly slos: pulumi.Output<outputs.BoardSlo[] | undefined>;
     /**
      * How the Board should be displayed in the UI.
      *
      * @deprecated Deprecated
      */
-    public readonly style!: pulumi.Output<string>;
+    declare public readonly style: pulumi.Output<string>;
 
     /**
      * Create a Board resource with the given unique name, arguments, and options.
@@ -78,21 +78,21 @@ export class Board extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BoardState | undefined;
-            resourceInputs["boardUrl"] = state ? state.boardUrl : undefined;
-            resourceInputs["columnLayout"] = state ? state.columnLayout : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["queries"] = state ? state.queries : undefined;
-            resourceInputs["slos"] = state ? state.slos : undefined;
-            resourceInputs["style"] = state ? state.style : undefined;
+            resourceInputs["boardUrl"] = state?.boardUrl;
+            resourceInputs["columnLayout"] = state?.columnLayout;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["queries"] = state?.queries;
+            resourceInputs["slos"] = state?.slos;
+            resourceInputs["style"] = state?.style;
         } else {
             const args = argsOrState as BoardArgs | undefined;
-            resourceInputs["columnLayout"] = args ? args.columnLayout : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["queries"] = args ? args.queries : undefined;
-            resourceInputs["slos"] = args ? args.slos : undefined;
-            resourceInputs["style"] = args ? args.style : undefined;
+            resourceInputs["columnLayout"] = args?.columnLayout;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["queries"] = args?.queries;
+            resourceInputs["slos"] = args?.slos;
+            resourceInputs["style"] = args?.style;
             resourceInputs["boardUrl"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

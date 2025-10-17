@@ -16,7 +16,7 @@ class DerivedColumn extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     static get(name, id, state, opts) {
-        return new DerivedColumn(name, state, Object.assign(Object.assign({}, opts), { id: id }));
+        return new DerivedColumn(name, state, { ...opts, id: id });
     }
     /**
      * Returns true if the given object is an instance of DerivedColumn.  This is designed to work even
@@ -33,25 +33,25 @@ class DerivedColumn extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState;
-            resourceInputs["alias"] = state ? state.alias : undefined;
-            resourceInputs["dataset"] = state ? state.dataset : undefined;
-            resourceInputs["derivedColumnId"] = state ? state.derivedColumnId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["expression"] = state ? state.expression : undefined;
+            resourceInputs["alias"] = state?.alias;
+            resourceInputs["dataset"] = state?.dataset;
+            resourceInputs["derivedColumnId"] = state?.derivedColumnId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["expression"] = state?.expression;
         }
         else {
             const args = argsOrState;
-            if ((!args || args.alias === undefined) && !opts.urn) {
+            if (args?.alias === undefined && !opts.urn) {
                 throw new Error("Missing required property 'alias'");
             }
-            if ((!args || args.expression === undefined) && !opts.urn) {
+            if (args?.expression === undefined && !opts.urn) {
                 throw new Error("Missing required property 'expression'");
             }
-            resourceInputs["alias"] = args ? args.alias : undefined;
-            resourceInputs["dataset"] = args ? args.dataset : undefined;
-            resourceInputs["derivedColumnId"] = args ? args.derivedColumnId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["expression"] = args ? args.expression : undefined;
+            resourceInputs["alias"] = args?.alias;
+            resourceInputs["dataset"] = args?.dataset;
+            resourceInputs["derivedColumnId"] = args?.derivedColumnId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["expression"] = args?.expression;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DerivedColumn.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

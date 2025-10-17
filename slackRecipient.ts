@@ -36,8 +36,8 @@ export class SlackRecipient extends pulumi.CustomResource {
      * The Slack channel or username to send the notification to. Must begin with `#` or `@` or be a valid channel id e.g.
      * `CABC123DEF.
      */
-    public readonly channel!: pulumi.Output<string>;
-    public readonly slackRecipientId!: pulumi.Output<string>;
+    declare public readonly channel: pulumi.Output<string>;
+    declare public readonly slackRecipientId: pulumi.Output<string>;
 
     /**
      * Create a SlackRecipient resource with the given unique name, arguments, and options.
@@ -52,15 +52,15 @@ export class SlackRecipient extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SlackRecipientState | undefined;
-            resourceInputs["channel"] = state ? state.channel : undefined;
-            resourceInputs["slackRecipientId"] = state ? state.slackRecipientId : undefined;
+            resourceInputs["channel"] = state?.channel;
+            resourceInputs["slackRecipientId"] = state?.slackRecipientId;
         } else {
             const args = argsOrState as SlackRecipientArgs | undefined;
-            if ((!args || args.channel === undefined) && !opts.urn) {
+            if (args?.channel === undefined && !opts.urn) {
                 throw new Error("Missing required property 'channel'");
             }
-            resourceInputs["channel"] = args ? args.channel : undefined;
-            resourceInputs["slackRecipientId"] = args ? args.slackRecipientId : undefined;
+            resourceInputs["channel"] = args?.channel;
+            resourceInputs["slackRecipientId"] = args?.slackRecipientId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SlackRecipient.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

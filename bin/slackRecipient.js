@@ -16,7 +16,7 @@ class SlackRecipient extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     static get(name, id, state, opts) {
-        return new SlackRecipient(name, state, Object.assign(Object.assign({}, opts), { id: id }));
+        return new SlackRecipient(name, state, { ...opts, id: id });
     }
     /**
      * Returns true if the given object is an instance of SlackRecipient.  This is designed to work even
@@ -33,16 +33,16 @@ class SlackRecipient extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState;
-            resourceInputs["channel"] = state ? state.channel : undefined;
-            resourceInputs["slackRecipientId"] = state ? state.slackRecipientId : undefined;
+            resourceInputs["channel"] = state?.channel;
+            resourceInputs["slackRecipientId"] = state?.slackRecipientId;
         }
         else {
             const args = argsOrState;
-            if ((!args || args.channel === undefined) && !opts.urn) {
+            if (args?.channel === undefined && !opts.urn) {
                 throw new Error("Missing required property 'channel'");
             }
-            resourceInputs["channel"] = args ? args.channel : undefined;
-            resourceInputs["slackRecipientId"] = args ? args.slackRecipientId : undefined;
+            resourceInputs["channel"] = args?.channel;
+            resourceInputs["slackRecipientId"] = args?.slackRecipientId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SlackRecipient.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

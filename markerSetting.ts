@@ -35,24 +35,24 @@ export class MarkerSetting extends pulumi.CustomResource {
     /**
      * The color set for the marker as a hex color code.
      */
-    public readonly color!: pulumi.Output<string>;
+    declare public readonly color: pulumi.Output<string>;
     /**
      * Timestamp when the marker setting was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The dataset this marker setting belongs to. If not set, it will be Environment-wide.
      */
-    public readonly dataset!: pulumi.Output<string | undefined>;
-    public readonly markerSettingId!: pulumi.Output<string>;
+    declare public readonly dataset: pulumi.Output<string | undefined>;
+    declare public readonly markerSettingId: pulumi.Output<string>;
     /**
      * The type of marker setting. (e.g. "deploy", "job-run")
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * Timestamp when the marker setting was last modified.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a MarkerSetting resource with the given unique name, arguments, and options.
@@ -67,24 +67,24 @@ export class MarkerSetting extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MarkerSettingState | undefined;
-            resourceInputs["color"] = state ? state.color : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["dataset"] = state ? state.dataset : undefined;
-            resourceInputs["markerSettingId"] = state ? state.markerSettingId : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["color"] = state?.color;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["dataset"] = state?.dataset;
+            resourceInputs["markerSettingId"] = state?.markerSettingId;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as MarkerSettingArgs | undefined;
-            if ((!args || args.color === undefined) && !opts.urn) {
+            if (args?.color === undefined && !opts.urn) {
                 throw new Error("Missing required property 'color'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["color"] = args ? args.color : undefined;
-            resourceInputs["dataset"] = args ? args.dataset : undefined;
-            resourceInputs["markerSettingId"] = args ? args.markerSettingId : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["color"] = args?.color;
+            resourceInputs["dataset"] = args?.dataset;
+            resourceInputs["markerSettingId"] = args?.markerSettingId;
+            resourceInputs["type"] = args?.type;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }

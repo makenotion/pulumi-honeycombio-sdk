@@ -35,35 +35,35 @@ export class Column extends pulumi.CustomResource {
     /**
      * The time the Column was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The dataset this Column belongs to.
      */
-    public readonly dataset!: pulumi.Output<string>;
+    declare public readonly dataset: pulumi.Output<string>;
     /**
      * The Column's description.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Whether the Column is hidden or not.
      */
-    public readonly hidden!: pulumi.Output<boolean>;
+    declare public readonly hidden: pulumi.Output<boolean>;
     /**
      * The time the Column was last written to.
      */
-    public /*out*/ readonly lastWrittenAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastWrittenAt: pulumi.Output<string>;
     /**
      * The name of the Column.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The Column's type. Valid values are `string`, `integer`, `float`, `boolean`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The time the Column was last updated.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a Column resource with the given unique name, arguments, and options.
@@ -78,24 +78,24 @@ export class Column extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ColumnState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["dataset"] = state ? state.dataset : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["hidden"] = state ? state.hidden : undefined;
-            resourceInputs["lastWrittenAt"] = state ? state.lastWrittenAt : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["dataset"] = state?.dataset;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["hidden"] = state?.hidden;
+            resourceInputs["lastWrittenAt"] = state?.lastWrittenAt;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as ColumnArgs | undefined;
-            if ((!args || args.dataset === undefined) && !opts.urn) {
+            if (args?.dataset === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataset'");
             }
-            resourceInputs["dataset"] = args ? args.dataset : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["hidden"] = args ? args.hidden : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["dataset"] = args?.dataset;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["hidden"] = args?.hidden;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["type"] = args?.type;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["lastWrittenAt"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;

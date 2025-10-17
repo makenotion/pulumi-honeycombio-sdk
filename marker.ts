@@ -35,20 +35,20 @@ export class Marker extends pulumi.CustomResource {
     /**
      * The dataset where this marker is placed. If not set, it will be Environment-wide.
      */
-    public readonly dataset!: pulumi.Output<string | undefined>;
-    public readonly markerId!: pulumi.Output<string>;
+    declare public readonly dataset: pulumi.Output<string | undefined>;
+    declare public readonly markerId: pulumi.Output<string>;
     /**
      * A message that appears above the marker and can be used to describe the marker.
      */
-    public readonly message!: pulumi.Output<string | undefined>;
+    declare public readonly message: pulumi.Output<string | undefined>;
     /**
      * The type of the marker (e.g. "deploy", "job-run")
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
     /**
      * A target URL for the Marker. Rendered as a link in the UI.
      */
-    public readonly url!: pulumi.Output<string | undefined>;
+    declare public readonly url: pulumi.Output<string | undefined>;
 
     /**
      * Create a Marker resource with the given unique name, arguments, and options.
@@ -63,18 +63,18 @@ export class Marker extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MarkerState | undefined;
-            resourceInputs["dataset"] = state ? state.dataset : undefined;
-            resourceInputs["markerId"] = state ? state.markerId : undefined;
-            resourceInputs["message"] = state ? state.message : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["dataset"] = state?.dataset;
+            resourceInputs["markerId"] = state?.markerId;
+            resourceInputs["message"] = state?.message;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as MarkerArgs | undefined;
-            resourceInputs["dataset"] = args ? args.dataset : undefined;
-            resourceInputs["markerId"] = args ? args.markerId : undefined;
-            resourceInputs["message"] = args ? args.message : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["dataset"] = args?.dataset;
+            resourceInputs["markerId"] = args?.markerId;
+            resourceInputs["message"] = args?.message;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["url"] = args?.url;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Marker.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

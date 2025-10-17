@@ -16,7 +16,7 @@ class Trigger extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     static get(name, id, state, opts) {
-        return new Trigger(name, state, Object.assign(Object.assign({}, opts), { id: id }));
+        return new Trigger(name, state, { ...opts, id: id });
     }
     /**
      * Returns true if the given object is an instance of Trigger.  This is designed to work even
@@ -33,35 +33,35 @@ class Trigger extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState;
-            resourceInputs["alertType"] = state ? state.alertType : undefined;
-            resourceInputs["baselineDetails"] = state ? state.baselineDetails : undefined;
-            resourceInputs["dataset"] = state ? state.dataset : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["evaluationSchedules"] = state ? state.evaluationSchedules : undefined;
-            resourceInputs["frequency"] = state ? state.frequency : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["queryId"] = state ? state.queryId : undefined;
-            resourceInputs["queryJson"] = state ? state.queryJson : undefined;
-            resourceInputs["recipients"] = state ? state.recipients : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["thresholds"] = state ? state.thresholds : undefined;
+            resourceInputs["alertType"] = state?.alertType;
+            resourceInputs["baselineDetails"] = state?.baselineDetails;
+            resourceInputs["dataset"] = state?.dataset;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["evaluationSchedules"] = state?.evaluationSchedules;
+            resourceInputs["frequency"] = state?.frequency;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["queryId"] = state?.queryId;
+            resourceInputs["queryJson"] = state?.queryJson;
+            resourceInputs["recipients"] = state?.recipients;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["thresholds"] = state?.thresholds;
         }
         else {
             const args = argsOrState;
-            resourceInputs["alertType"] = args ? args.alertType : undefined;
-            resourceInputs["baselineDetails"] = args ? args.baselineDetails : undefined;
-            resourceInputs["dataset"] = args ? args.dataset : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["evaluationSchedules"] = args ? args.evaluationSchedules : undefined;
-            resourceInputs["frequency"] = args ? args.frequency : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["queryId"] = args ? args.queryId : undefined;
-            resourceInputs["queryJson"] = args ? args.queryJson : undefined;
-            resourceInputs["recipients"] = args ? args.recipients : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["thresholds"] = args ? args.thresholds : undefined;
+            resourceInputs["alertType"] = args?.alertType;
+            resourceInputs["baselineDetails"] = args?.baselineDetails;
+            resourceInputs["dataset"] = args?.dataset;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["evaluationSchedules"] = args?.evaluationSchedules;
+            resourceInputs["frequency"] = args?.frequency;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["queryId"] = args?.queryId;
+            resourceInputs["queryJson"] = args?.queryJson;
+            resourceInputs["recipients"] = args?.recipients;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["thresholds"] = args?.thresholds;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Trigger.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

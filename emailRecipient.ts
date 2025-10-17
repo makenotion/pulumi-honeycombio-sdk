@@ -35,8 +35,8 @@ export class EmailRecipient extends pulumi.CustomResource {
     /**
      * The email address to send the notification to
      */
-    public readonly address!: pulumi.Output<string>;
-    public readonly emailRecipientId!: pulumi.Output<string>;
+    declare public readonly address: pulumi.Output<string>;
+    declare public readonly emailRecipientId: pulumi.Output<string>;
 
     /**
      * Create a EmailRecipient resource with the given unique name, arguments, and options.
@@ -51,15 +51,15 @@ export class EmailRecipient extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EmailRecipientState | undefined;
-            resourceInputs["address"] = state ? state.address : undefined;
-            resourceInputs["emailRecipientId"] = state ? state.emailRecipientId : undefined;
+            resourceInputs["address"] = state?.address;
+            resourceInputs["emailRecipientId"] = state?.emailRecipientId;
         } else {
             const args = argsOrState as EmailRecipientArgs | undefined;
-            if ((!args || args.address === undefined) && !opts.urn) {
+            if (args?.address === undefined && !opts.urn) {
                 throw new Error("Missing required property 'address'");
             }
-            resourceInputs["address"] = args ? args.address : undefined;
-            resourceInputs["emailRecipientId"] = args ? args.emailRecipientId : undefined;
+            resourceInputs["address"] = args?.address;
+            resourceInputs["emailRecipientId"] = args?.emailRecipientId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EmailRecipient.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

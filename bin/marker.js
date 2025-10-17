@@ -16,7 +16,7 @@ class Marker extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     static get(name, id, state, opts) {
-        return new Marker(name, state, Object.assign(Object.assign({}, opts), { id: id }));
+        return new Marker(name, state, { ...opts, id: id });
     }
     /**
      * Returns true if the given object is an instance of Marker.  This is designed to work even
@@ -33,19 +33,19 @@ class Marker extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState;
-            resourceInputs["dataset"] = state ? state.dataset : undefined;
-            resourceInputs["markerId"] = state ? state.markerId : undefined;
-            resourceInputs["message"] = state ? state.message : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["dataset"] = state?.dataset;
+            resourceInputs["markerId"] = state?.markerId;
+            resourceInputs["message"] = state?.message;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["url"] = state?.url;
         }
         else {
             const args = argsOrState;
-            resourceInputs["dataset"] = args ? args.dataset : undefined;
-            resourceInputs["markerId"] = args ? args.markerId : undefined;
-            resourceInputs["message"] = args ? args.message : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["dataset"] = args?.dataset;
+            resourceInputs["markerId"] = args?.markerId;
+            resourceInputs["message"] = args?.message;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["url"] = args?.url;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Marker.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

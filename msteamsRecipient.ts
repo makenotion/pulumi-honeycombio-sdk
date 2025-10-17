@@ -32,15 +32,15 @@ export class MsteamsRecipient extends pulumi.CustomResource {
         return obj['__pulumiType'] === MsteamsRecipient.__pulumiType;
     }
 
-    public readonly msteamsRecipientId!: pulumi.Output<string>;
+    declare public readonly msteamsRecipientId: pulumi.Output<string>;
     /**
      * The name of the recipient.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The Incoming Webhook URL to send the notification to
      */
-    public readonly url!: pulumi.Output<string>;
+    declare public readonly url: pulumi.Output<string>;
 
     /**
      * Create a MsteamsRecipient resource with the given unique name, arguments, and options.
@@ -55,17 +55,17 @@ export class MsteamsRecipient extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MsteamsRecipientState | undefined;
-            resourceInputs["msteamsRecipientId"] = state ? state.msteamsRecipientId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["msteamsRecipientId"] = state?.msteamsRecipientId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as MsteamsRecipientArgs | undefined;
-            if ((!args || args.url === undefined) && !opts.urn) {
+            if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            resourceInputs["msteamsRecipientId"] = args ? args.msteamsRecipientId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["msteamsRecipientId"] = args?.msteamsRecipientId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["url"] = args?.url;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MsteamsRecipient.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

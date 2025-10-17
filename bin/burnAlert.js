@@ -16,7 +16,7 @@ class BurnAlert extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     static get(name, id, state, opts) {
-        return new BurnAlert(name, state, Object.assign(Object.assign({}, opts), { id: id }));
+        return new BurnAlert(name, state, { ...opts, id: id });
     }
     /**
      * Returns true if the given object is an instance of BurnAlert.  This is designed to work even
@@ -33,28 +33,28 @@ class BurnAlert extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState;
-            resourceInputs["alertType"] = state ? state.alertType : undefined;
-            resourceInputs["budgetRateDecreasePercent"] = state ? state.budgetRateDecreasePercent : undefined;
-            resourceInputs["budgetRateWindowMinutes"] = state ? state.budgetRateWindowMinutes : undefined;
-            resourceInputs["dataset"] = state ? state.dataset : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["exhaustionMinutes"] = state ? state.exhaustionMinutes : undefined;
-            resourceInputs["recipients"] = state ? state.recipients : undefined;
-            resourceInputs["sloId"] = state ? state.sloId : undefined;
+            resourceInputs["alertType"] = state?.alertType;
+            resourceInputs["budgetRateDecreasePercent"] = state?.budgetRateDecreasePercent;
+            resourceInputs["budgetRateWindowMinutes"] = state?.budgetRateWindowMinutes;
+            resourceInputs["dataset"] = state?.dataset;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["exhaustionMinutes"] = state?.exhaustionMinutes;
+            resourceInputs["recipients"] = state?.recipients;
+            resourceInputs["sloId"] = state?.sloId;
         }
         else {
             const args = argsOrState;
-            if ((!args || args.sloId === undefined) && !opts.urn) {
+            if (args?.sloId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sloId'");
             }
-            resourceInputs["alertType"] = args ? args.alertType : undefined;
-            resourceInputs["budgetRateDecreasePercent"] = args ? args.budgetRateDecreasePercent : undefined;
-            resourceInputs["budgetRateWindowMinutes"] = args ? args.budgetRateWindowMinutes : undefined;
-            resourceInputs["dataset"] = args ? args.dataset : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["exhaustionMinutes"] = args ? args.exhaustionMinutes : undefined;
-            resourceInputs["recipients"] = args ? args.recipients : undefined;
-            resourceInputs["sloId"] = args ? args.sloId : undefined;
+            resourceInputs["alertType"] = args?.alertType;
+            resourceInputs["budgetRateDecreasePercent"] = args?.budgetRateDecreasePercent;
+            resourceInputs["budgetRateWindowMinutes"] = args?.budgetRateWindowMinutes;
+            resourceInputs["dataset"] = args?.dataset;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["exhaustionMinutes"] = args?.exhaustionMinutes;
+            resourceInputs["recipients"] = args?.recipients;
+            resourceInputs["sloId"] = args?.sloId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BurnAlert.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

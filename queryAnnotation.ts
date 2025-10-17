@@ -35,19 +35,19 @@ export class QueryAnnotation extends pulumi.CustomResource {
     /**
      * The dataset this query annotation is added to. If not set, an Environment-wide query annotation will be created.
      */
-    public readonly dataset!: pulumi.Output<string>;
+    declare public readonly dataset: pulumi.Output<string>;
     /**
      * The description to display as the query annotation.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The name to display as the query annotation.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the query that the annotation will be created on. Note that a query can have more than one annotation.
      */
-    public readonly queryId!: pulumi.Output<string>;
+    declare public readonly queryId: pulumi.Output<string>;
 
     /**
      * Create a QueryAnnotation resource with the given unique name, arguments, and options.
@@ -62,19 +62,19 @@ export class QueryAnnotation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QueryAnnotationState | undefined;
-            resourceInputs["dataset"] = state ? state.dataset : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["queryId"] = state ? state.queryId : undefined;
+            resourceInputs["dataset"] = state?.dataset;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["queryId"] = state?.queryId;
         } else {
             const args = argsOrState as QueryAnnotationArgs | undefined;
-            if ((!args || args.queryId === undefined) && !opts.urn) {
+            if (args?.queryId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'queryId'");
             }
-            resourceInputs["dataset"] = args ? args.dataset : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["queryId"] = args ? args.queryId : undefined;
+            resourceInputs["dataset"] = args?.dataset;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["queryId"] = args?.queryId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(QueryAnnotation.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

@@ -16,7 +16,7 @@ class Slo extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     static get(name, id, state, opts) {
-        return new Slo(name, state, Object.assign(Object.assign({}, opts), { id: id }));
+        return new Slo(name, state, { ...opts, id: id });
     }
     /**
      * Returns true if the given object is an instance of Slo.  This is designed to work even
@@ -33,34 +33,34 @@ class Slo extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState;
-            resourceInputs["dataset"] = state ? state.dataset : undefined;
-            resourceInputs["datasets"] = state ? state.datasets : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["sli"] = state ? state.sli : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["targetPercentage"] = state ? state.targetPercentage : undefined;
-            resourceInputs["timePeriod"] = state ? state.timePeriod : undefined;
+            resourceInputs["dataset"] = state?.dataset;
+            resourceInputs["datasets"] = state?.datasets;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["sli"] = state?.sli;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["targetPercentage"] = state?.targetPercentage;
+            resourceInputs["timePeriod"] = state?.timePeriod;
         }
         else {
             const args = argsOrState;
-            if ((!args || args.sli === undefined) && !opts.urn) {
+            if (args?.sli === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sli'");
             }
-            if ((!args || args.targetPercentage === undefined) && !opts.urn) {
+            if (args?.targetPercentage === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetPercentage'");
             }
-            if ((!args || args.timePeriod === undefined) && !opts.urn) {
+            if (args?.timePeriod === undefined && !opts.urn) {
                 throw new Error("Missing required property 'timePeriod'");
             }
-            resourceInputs["dataset"] = args ? args.dataset : undefined;
-            resourceInputs["datasets"] = args ? args.datasets : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["sli"] = args ? args.sli : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["targetPercentage"] = args ? args.targetPercentage : undefined;
-            resourceInputs["timePeriod"] = args ? args.timePeriod : undefined;
+            resourceInputs["dataset"] = args?.dataset;
+            resourceInputs["datasets"] = args?.datasets;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["sli"] = args?.sli;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["targetPercentage"] = args?.targetPercentage;
+            resourceInputs["timePeriod"] = args?.timePeriod;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Slo.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

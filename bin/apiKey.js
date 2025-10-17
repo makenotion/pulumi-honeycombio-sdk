@@ -16,7 +16,7 @@ class ApiKey extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     static get(name, id, state, opts) {
-        return new ApiKey(name, state, Object.assign(Object.assign({}, opts), { id: id }));
+        return new ApiKey(name, state, { ...opts, id: id });
     }
     /**
      * Returns true if the given object is an instance of ApiKey.  This is designed to work even
@@ -33,27 +33,27 @@ class ApiKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["environmentId"] = state ? state.environmentId : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["permissions"] = state ? state.permissions : undefined;
-            resourceInputs["secret"] = state ? state.secret : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["environmentId"] = state?.environmentId;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["permissions"] = state?.permissions;
+            resourceInputs["secret"] = state?.secret;
+            resourceInputs["type"] = state?.type;
         }
         else {
             const args = argsOrState;
-            if ((!args || args.environmentId === undefined) && !opts.urn) {
+            if (args?.environmentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environmentId'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["environmentId"] = args ? args.environmentId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["permissions"] = args ? args.permissions : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["environmentId"] = args?.environmentId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["permissions"] = args?.permissions;
+            resourceInputs["type"] = args?.type;
             resourceInputs["key"] = undefined /*out*/;
             resourceInputs["secret"] = undefined /*out*/;
         }

@@ -32,15 +32,15 @@ export class MsteamsWorkflowRecipient extends pulumi.CustomResource {
         return obj['__pulumiType'] === MsteamsWorkflowRecipient.__pulumiType;
     }
 
-    public readonly msteamsWorkflowRecipientId!: pulumi.Output<string>;
+    declare public readonly msteamsWorkflowRecipientId: pulumi.Output<string>;
     /**
      * The name of the recipient.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The Teams Workflow URL to send the notification to.
      */
-    public readonly url!: pulumi.Output<string>;
+    declare public readonly url: pulumi.Output<string>;
 
     /**
      * Create a MsteamsWorkflowRecipient resource with the given unique name, arguments, and options.
@@ -55,17 +55,17 @@ export class MsteamsWorkflowRecipient extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MsteamsWorkflowRecipientState | undefined;
-            resourceInputs["msteamsWorkflowRecipientId"] = state ? state.msteamsWorkflowRecipientId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["msteamsWorkflowRecipientId"] = state?.msteamsWorkflowRecipientId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as MsteamsWorkflowRecipientArgs | undefined;
-            if ((!args || args.url === undefined) && !opts.urn) {
+            if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            resourceInputs["msteamsWorkflowRecipientId"] = args ? args.msteamsWorkflowRecipientId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["msteamsWorkflowRecipientId"] = args?.msteamsWorkflowRecipientId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["url"] = args?.url;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MsteamsWorkflowRecipient.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

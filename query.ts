@@ -35,12 +35,12 @@ export class Query extends pulumi.CustomResource {
     /**
      * The dataset this Query is associated with. If not set, it will be Environment-wide.
      */
-    public readonly dataset!: pulumi.Output<string>;
+    declare public readonly dataset: pulumi.Output<string>;
     /**
      * A JSON object describing the query according to the Query Specification. While the JSON can be constructed manually, it
      * is easiest to use the `honeycombio.getQuerySpecification` data source.
      */
-    public readonly queryJson!: pulumi.Output<string>;
+    declare public readonly queryJson: pulumi.Output<string>;
 
     /**
      * Create a Query resource with the given unique name, arguments, and options.
@@ -55,15 +55,15 @@ export class Query extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QueryState | undefined;
-            resourceInputs["dataset"] = state ? state.dataset : undefined;
-            resourceInputs["queryJson"] = state ? state.queryJson : undefined;
+            resourceInputs["dataset"] = state?.dataset;
+            resourceInputs["queryJson"] = state?.queryJson;
         } else {
             const args = argsOrState as QueryArgs | undefined;
-            if ((!args || args.queryJson === undefined) && !opts.urn) {
+            if (args?.queryJson === undefined && !opts.urn) {
                 throw new Error("Missing required property 'queryJson'");
             }
-            resourceInputs["dataset"] = args ? args.dataset : undefined;
-            resourceInputs["queryJson"] = args ? args.queryJson : undefined;
+            resourceInputs["dataset"] = args?.dataset;
+            resourceInputs["queryJson"] = args?.queryJson;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Query.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
